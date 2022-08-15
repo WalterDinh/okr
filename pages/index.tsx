@@ -5,12 +5,14 @@ import SectionBlog from "components/SectionBlog";
 import SectionMainStack from "components/SectionMainStack";
 import SectionTypist from "components/SectionTypist";
 import SectionAboutUs from "components/SectionAboutUs";
+import FormInputSelect from "components/FormInputSelect";
 
 const Home: NextPage = () => {
   return (
     <Fragment>
       {/* <SectionPresentation /> */}
       <SectionTypist />
+      <FormInputSelect/>
       <SectionBlog />
       <SectionAboutUs />
       <SectionMainStack />
