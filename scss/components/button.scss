@@ -1,0 +1,22 @@
+.button-root {
+  display: flex;
+  min-width: 140px;
+  min-height: 40px;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.button-root:hover {
+  cursor: pointer;
+}
+.button-primary {
+  background-color: #18202e;
+  color: #ffffff;
+}
+.button-secondary {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: solid 1px #000000;
+}
+.button-radius {
+  border-radius: 4px;
+}
