@@ -1,0 +1,28 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .user__image {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 15px;
+  }
+
+  .user__name {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .user__role {
+    font-size: 1rem;
+    color: var(--color-grey);
+    font-weight: 500;
+  }
+}

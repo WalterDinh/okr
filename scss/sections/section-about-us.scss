@@ -1,0 +1,38 @@
+.section-about-us {
+  .bosses,
+  .users {
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .bosses {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    .user:nth-child(1) {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+    }
+    .user:nth-child(2) {
+      grid-column: 4 / 5;
+      grid-row: 1 / 2;
+    }
+
+    @include tablet-down {
+      grid-template-columns: repeat(2, 1fr);
+      .user:nth-child(1),
+      .user:nth-child(2) {
+        grid-column: auto;
+        grid-row: auto;
+      }
+    }
+  }
+
+  .users {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+    @include tablet-down {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

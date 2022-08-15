@@ -1,0 +1,24 @@
+@import "./reset.scss";
+@import "./variables/var.scss";
+@import "./mixin.scss";
+@import "./nprogress.scss";
+@import "./scroll-progress.scss";
+@import "./custom.scss";
+
+// Page
+@import "./pages/home.scss";
+@import "./pages/navbar.scss";
+@import "./pages/footer.scss";
+@import "./pages/loading.scss";
+@import "./pages/footer.scss";
+
+// Component
+@import "./components/new.scss";
+@import "./components/stack.scss";
+@import "./components/user.scss";
+
+// Section
+@import "./sections/section-blog.scss";
+@import "./sections/section-main-stack.scss";
+@import "./sections/section-typist.scss";
+@import "./sections/section-about-us.scss";

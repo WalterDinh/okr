@@ -1,0 +1,206 @@
+.nav-root {
+  height: 100%;
+  box-shadow: 0px 2px 4px #ccc;
+}
+
+.navbar {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.navbar__logo {
+  max-width: 200px;
+  width: 60px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.navbar__logo:hover {
+  cursor: pointer;
+}
+
+.navbar__items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+}
+
+.navbar__item {
+  margin-left: 2rem;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.navbar__item:hover {
+  cursor: pointer;
+  color: var(--color-hover);
+}
+
+.navbar__item.humburger {
+  margin: 12px;
+  min-height: 30px;
+  position: relative;
+}
+
+.navbar__item.humburger::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  bottom: 0;
+  left: 0;
+}
+
+// Navbar dzb
+// Fix navbar overflow hidden doesn't work on iphone
+// body.active {
+//   position: relative;
+// 	overflow: hidden;
+// }
+
+.dzb-navbar * {
+  box-sizing: border-box;
+}
+
+.dzb-navbar {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 80px;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 999;
+  box-shadow: var(--box-shadow);
+}
+
+.dzb-navbar-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.dzb-hamburger {
+  display: none;
+  width: 100%;
+}
+
+.dzb-hamburger-menu {
+  display: none;
+  flex-flow: column;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-hamburger-menu);
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  z-index: 2;
+}
+
+.dzb-hamburger-line {
+  height: 1px;
+  width: 100%;
+  transition: all 0.3s ease-out;
+  background-color: var(--color-hamburger-menu);
+}
+
+.dzb-hamburger-line::before,
+.dzb-hamburger-line::after {
+  content: "";
+  position: relative;
+  display: block;
+  height: 1px;
+  background-color: var(--color-hamburger-menu);
+  width: 100%;
+  top: 7px;
+  transition: all 0.3s ease-out;
+}
+
+.dzb-hamburger-line::after {
+  top: -8px;
+}
+
+.dzb-hamburger-menu:hover {
+  cursor: pointer;
+}
+
+.dzb-navbar {
+  background-color: var(--background-color);
+}
+
+.dzb-navbar.active .dzb-hamburger-line {
+  transform: rotate(135deg);
+}
+
+.dzb-navbar.active .dzb-hamburger-line::before,
+.dzb-navbar.active .dzb-hamburger-line::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.dzb-hamburger-wrap {
+  position: absolute;
+  right: 0;
+  top: 80px;
+
+  width: 100%;
+  max-height: 100vh;
+  height: 100vh;
+  background-color: var(--background-color);
+
+  transition: all 0.4s;
+  transform: scaleY(0);
+  transform-origin: top;
+
+  word-break: break-word;
+  overflow: hidden;
+  z-index: 999;
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+}
+
+.active.dzb-hamburger-wrap {
+  overflow: hidden;
+  max-height: 1024px;
+  transform: scaleY(1);
+}
+
+.dzb-hamburger-wrap * {
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.active.dzb-hamburger-wrap * {
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+@media (max-width: 768px) {
+  .dzb-navbar {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .dzb-hamburger-menu {
+    display: flex;
+  }
+  .dzb-navbar-wrap {
+    display: none;
+  }
+  .dzb-hamburger {
+    display: block;
+  }
+}
