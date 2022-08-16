@@ -48,7 +48,11 @@ const Header2: React.FC<Header2I> = ({
           onClick={onClick}
           icon={<HiPlus />}
           borderRadius="round"
-          style={{ padding: "8px 16px", border: "0" }}
+          style={{
+            padding: "8px 16px",
+            border: "0",
+            minHeight: "unset",
+          }}
         />
         <div className="utilities">
           <svg
