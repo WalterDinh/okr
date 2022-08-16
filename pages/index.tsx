@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       <FormInputSelect/>
       <SectionBlog />
       <SectionAboutUs />
-      <SectionMainStack />
+      <SectionMainStack /> */}
     </Fragment>
   );
 };
