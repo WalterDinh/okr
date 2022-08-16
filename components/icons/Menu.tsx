@@ -1,8 +1,8 @@
 import React from "react";
 
 const MenuIcon = (props: any) => {
-  const color = props?.fill || "white";
-  const stroke = props?.stroke || "white";
+  const color = props?.fill || "#18202e";
+  const stroke = props?.stroke || "#18202e";
 
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" {...props}>

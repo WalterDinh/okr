@@ -66,11 +66,7 @@ const Sidebar: React.FC = () => {
         className={click ? "hamburger active" : "hamburger "}
         onClick={() => setClick(!click)}
       >
-        {click ? (
-          <CommonIcons.Close fill="#18202e" stroke="#18202e" />
-        ) : (
-          <CommonIcons.MenuIcon fill="#18202e" stroke="#18202e" />
-        )}
+        {click ? <CommonIcons.Close /> : <CommonIcons.MenuIcon />}
       </div>
     </>
   );

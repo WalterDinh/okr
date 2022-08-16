@@ -1,8 +1,8 @@
 import React from "react";
 
 const Close = (props: any) => {
-  const color = props?.fill || "white";
-  const stroke = props?.stroke || "white";
+  const color = props?.fill || "#18202e";
+  const stroke = props?.stroke || "#18202e";
 
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" {...props}>
