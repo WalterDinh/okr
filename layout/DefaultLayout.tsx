@@ -1,5 +1,6 @@
 import Footer from "components/Footer";
 import Header from "components/Header";
+import Sidebar from "components/Sidebar";
 import React, { Fragment } from "react";
 
 const DefaultLayout: React.FC = ({ children }) => {
@@ -10,7 +11,8 @@ const DefaultLayout: React.FC = ({ children }) => {
   //! Render
   return (
     <div id="root">
-      <Header />
+      {/* <Header /> */}
+      <Sidebar />
       <main>{children}</main>
       <Footer />
     </div>
