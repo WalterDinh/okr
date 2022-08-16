@@ -10,6 +10,8 @@
     "publish": "next build && next export"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@mui/icons-material": "^5.8.4",
     "axios": "^0.22.0",
     "body-scroll-lock": "^4.0.0-beta.0",
     "formik": "^2.2.9",
