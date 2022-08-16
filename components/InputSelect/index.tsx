@@ -1,24 +1,31 @@
-import React from 'react'
+import { IOption } from "interfaces/inputSelect";
+import React from "react";
 
 type Props = {
-    lable:string
-    placehoder:string
-    listOption:any
-}
+  label:string
+  field: any;
+  meta: any;
+  listOption: IOption[];
+};
 
-function InputSelect({lable,placehoder,listOption}: Props) {
+function InputSelect(props: Props) {
+  const { field, listOption, meta,label } = props;
   return (
     <div>
-        <p className='lable-input'>{lable}</p>
-        <div>
-            <select className='select-input'>
-                <option value="" disabled >{placehoder}</option>
-                {listOption.map((item:any,index:number)=><option key={index} value={item}>{item}</option>)}
-            </select>
-            
-        </div>
+      <p className="label-input">{label}</p>
+      <select className="select-input" {...field}>
+        <option value='' disabled>Lựa chọn</option>
+        {listOption.map((item) => (
+          <option key={item.value} value={item.value}>
+            {item.label}
+          </option>
+        ))}
+      </select>
+      {meta.touched && meta.error && (
+        <div className="error-message">{meta.error}</div>
+      )}
     </div>
-  )
+  );
 }
 
-export default InputSelect
+export default InputSelect;
