@@ -7,11 +7,20 @@ import {
   QuickNew,
 } from "components/CommonNews/New";
 import Heading from "components/Heading";
+import Input from "components/Input";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { FaReadme } from "react-icons/fa";
+import { Field, Form, Formik, FormikProps } from 'formik';
+
+
 
 const SectionBlog = () => {
+  const handleChange = () => {
+    console.log("handleChange");
+  }
   return (
     <Container className="section-blog">
+
       <Heading as="h3" className="mb-heading font-weight-heading">
         <FaReadme /> Kiến thức thú zị
       </Heading>
