@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
+import CommonIcons from "components/icons";
 
 import Dashborad from "../../public/assets/dashboard.png";
 import Checkin from "../../public/assets/checkin.png";
@@ -67,7 +66,11 @@ const Sidebar: React.FC = () => {
         className={click ? "hamburger active" : "hamburger "}
         onClick={() => setClick(!click)}
       >
-        {click ? <CloseIcon fontSize="large" /> : <MenuIcon fontSize="large" />}
+        {click ? (
+          <CommonIcons.Close fill="#18202e" stroke="#18202e" />
+        ) : (
+          <CommonIcons.MenuIcon fill="#18202e" stroke="#18202e" />
+        )}
       </div>
     </>
   );
