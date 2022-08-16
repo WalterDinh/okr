@@ -10,10 +10,10 @@ const Home: NextPage = () => {
   return (
     <Fragment>
       {/* <SectionPresentation /> */}
-      <SectionTypist />
+      {/* <SectionTypist />
       <SectionBlog />
       <SectionAboutUs />
-      <SectionMainStack />
+      <SectionMainStack /> */}
     </Fragment>
   );
 };

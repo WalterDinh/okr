@@ -4,31 +4,38 @@ import { Field, Form, Formik, FormikProps } from 'formik';
 
 interface Props {
     style?: Object;
-    placeholder?: string;
+    placeholder: string;
     onChange: () => void;
     icon?: React.ReactElement;
+    label?: string;
+    field: any;
+    form: any;
+    type: string;
 }
 
-const Input: React.FC<Props> = (props) => {
-    // const { style, placeholder, icon, onChange } = props;
-    //! State
-    //! Function
-    //! Render
+const Input: React.FC<Props> = (props: Props) => {
 
-    // return (
-    //     <div className="search-box" >
-    //         <div className="icon">{icon}</div>
-    //         <input className= 'input' style={style} placeholder={placeholder} onChange= {onChange}/>
-    //     </div>
-    // )
-    console.log(props);
+    const { field, form, label, icon } = props;
+    const { name } = field;
+    const { errors, touched } = form;
 
-    
+
+    const isErrors = errors[name] && touched[name];
+    const errorMessage = errors[name];
+
+
     return (
-        <div className="search-box" >
-            <div className="icon">{props.icon}</div>
-            <input className='input' style={props.style} placeholder={props.placeholder} {...props} />
-        </div>
+        <>
+            {label && <div className="label">{label}</div>}
+            <div className="search-box" >
+                {icon && <div className="icon">{props?.icon}</div>}
+                {icon
+                    ? <input className='input' style={props?.style} {...props} />
+                    : <input className='input2' style={props?.style} {...props} />
+                }
+                {isErrors && <div className="error">{errorMessage}</div>}
+            </div>
+        </>
     )
 }
 
