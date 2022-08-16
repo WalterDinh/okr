@@ -230,6 +230,7 @@
       font-weight: 700;
       font-size: 24px;
       line-height: 28px;
+      font-family: "Roboto";
 
       color: #ffffff;
     }
@@ -272,11 +273,9 @@
 }
 
 .hamburger {
-  position: relative;
+  position: absolute;
   top: 15px;
   left: 240px;
-  // background-color: #18202e;
-  // color: #fff;
   color: #18202e;
   width: 25px;
   height: 25px;
@@ -284,8 +283,8 @@
   justify-content: center;
   border-radius: 6px;
   display: none;
-  // display: flex;
-  position: absolute;
+
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {

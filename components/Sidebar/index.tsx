@@ -1,26 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import FactCheckIcon from "@mui/icons-material/FactCheck";
-import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmark";
-import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
-import AssessmentIcon from "@mui/icons-material/Assessment";
-import QuizIcon from "@mui/icons-material/Quiz";
+import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
+import Dashborad from "../../public/assets/dashboard.png";
+import Checkin from "../../public/assets/checkin.png";
+import Comment from "../../public/assets/b-comment.png";
+import Okrs from "../../public/assets/okrs.png";
+import Report from "../../public/assets/report.png";
+import Quiz from "../../public/assets/quiz.png";
+
 const lists = [
-  { id: 1, title: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
-  { id: 2, title: "Check-in", path: "/checkin", icon: <FactCheckIcon /> },
-  { id: 3, title: "OKRs", path: "/okrs", icon: <CollectionsBookmarkIcon /> },
-  { id: 4, title: "CFRs", path: "/cfrs", icon: <QuestionAnswerIcon /> },
-  { id: 5, title: "Report", path: "/report", icon: <AssessmentIcon /> },
-  { id: 6, title: "Quiz", path: "/quiz", icon: <QuizIcon /> },
+  { id: 1, title: "Dashboard", path: "/dashboard", src: Dashborad },
+  { id: 2, title: "Check-in", path: "/checkin", src: Checkin },
+  { id: 3, title: "OKRs", path: "/okrs", src: Okrs },
+  { id: 4, title: "CFRs", path: "/cfrs", src: Comment },
+  { id: 5, title: "Report", path: "/report", src: Report },
+  { id: 6, title: "Quiz", path: "/quiz", src: Quiz },
 ];
 
 const Sidebar: React.FC = () => {
+  //! State
   const [click, setClick] = useState(false);
 
+  //! Function
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setClick(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  //! Render
   return (
     <>
       <div className={click ? "sidebar-container active" : "sidebar-container"}>
@@ -34,7 +51,10 @@ const Sidebar: React.FC = () => {
             return (
               <Link href={list.path} key={list.id} passHref>
                 <div className="sidebar-bottom-item">
-                  <span className="sidebar-icon">{list?.icon}</span>
+                  <span className="sidebar-icon">
+                    <Image src={list.src} alt="Landscape picture" />
+                  </span>
+
                   <span>{list.title}</span>
                 </div>
               </Link>

@@ -11,7 +11,6 @@ const DefaultLayout: React.FC = ({ children }) => {
   //! Render
   return (
     <div id="root">
-      {/* <Header /> */}
       <Sidebar />
       <main>{children}</main>
       <Footer />
