@@ -1,0 +1,49 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  .login-form {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #e5e5e5;
+    form {
+      max-width: 432px;
+    }
+    .header {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 56px;
+    }
+    .inputField {
+      margin-bottom: 24px;
+    }
+    .utilities {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      margin-top: 8px;
+      align-items: center;
+      .remember {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .createAcc {
+      margin-top: 24px;
+      display: flex;
+      gap: 5px;
+      .question {
+        color: #949494;
+      }
+    }
+  }
+  .login-image {
+    width: 50%;
+    background-image: url('../../assets/img_form_auth.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

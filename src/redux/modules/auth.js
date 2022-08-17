@@ -31,14 +31,15 @@ export const authSaga = {
   },
   [authActions.login]: {
     saga: function* ({ payload }) {
-      const { username, password, callbacks } = payload;
+      const { email, password, keepLoggedIn, callbacks } = payload;
 
-      if (username === 'don' && password === 'don') {
-        authServices.saveUserLocalStorage({ username, isLogged: true });
+      if (email === 'don@gmail.com' && password === 'PQdon@123') {
+        keepLoggedIn && authServices.saveUserLocalStorage({ email, isLogged: true });
         yield put({ type: authActions.loginSuccess });
         callbacks && callbacks.onSuccess();
       } else {
         yield put({ type: authActions.loginFailed });
+        callbacks && callbacks.onFailed();
       }
     },
   },
