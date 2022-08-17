@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { HiPlus } from 'react-icons/hi';
 import { AiOutlineDown } from 'react-icons/ai';
 import { BiArrowBack } from 'react-icons/bi';
@@ -7,10 +7,25 @@ import CommonIcons from 'components/icons';
 import { useTranslation } from 'react-i18next';
 import { SIZE_ICON } from 'constants';
 
-const userMenu = ['Profile', 'Settings', 'Logout'];
+const userMenu = [
+  {
+    name: 'Profile',
+    onClick: () => {},
+  },
+  {
+    name: 'Settings',
+    onClick: () => {},
+  },
+  {
+    name: 'Logout',
+    onClick: () => {},
+  },
+];
 
 const Header = ({ onClick, nofication, name, onClickBack }) => {
+  //! State
   const { t } = useTranslation();
+  console.log(useTranslation());
   const [dropDown, setDropdown] = useState(false);
   const isBack = typeof onClickBack !== 'undefined';
 
@@ -39,7 +54,9 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
       width: '100%',
     },
   };
+  //! Function
 
+  //! Render
   return (
     <div
       className="header2"
@@ -59,14 +76,16 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
         </div>
       )}
       <div className="right">
-        <Button
-          type="primary"
-          innerText={t('message:add')}
-          onClick={onClick}
-          icon={<HiPlus />}
-          borderRadius="round"
-          style={buttonStyle['Button-2']}
-        />
+        <div className="addBtn">
+          <Button
+            type="primary"
+            innerText={t('header:add')}
+            onClick={onClick}
+            icon={<HiPlus />}
+            borderRadius="round"
+            style={buttonStyle['Button-2']}
+          />
+        </div>
         <div className="utilities">
           <CommonIcons.Clock size={SIZE_ICON} />
           <div className="bell">
@@ -78,7 +97,9 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
           <div className="avatar"></div>
           <Button
             innerText={name}
-            onClick={() => setDropdown(!dropDown)}
+            onClick={() => {
+              setDropdown(!dropDown);
+            }}
             icon={
               dropDown ? (
                 <AiOutlineDown
@@ -99,16 +120,31 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
             style={buttonStyle['Button-3']}
           ></Button>
           <div className={dropDown ? 'userMenu' : 'userMenu-disable'}>
-            {dropDown &&
-              userMenu.map((item, index) => (
-                <Button
-                  innerText={item}
-                  type="secondary"
-                  onClick={onClick}
-                  key={index}
-                  style={buttonStyle['Button-4']}
-                />
-              ))}
+            {dropDown ? (
+              <Fragment>
+                <div className="dropDown-btn">
+                  <Button
+                    type="primary"
+                    innerText={t('message:add')}
+                    onClick={onClick}
+                    icon={<HiPlus />}
+                    borderRadius="round"
+                    style={{ width: '100%' }}
+                  />
+                </div>
+                {userMenu.map((item, index) => (
+                  <Button
+                    innerText={item.name}
+                    type="secondary"
+                    onClick={item.onClick}
+                    key={index}
+                    style={buttonStyle['Button-4']}
+                  />
+                ))}
+              </Fragment>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>
