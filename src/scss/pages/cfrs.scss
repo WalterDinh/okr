@@ -1,0 +1,126 @@
+.cfrs-container {
+  .cfrs-top {
+    @include d-flex-sb;
+    margin-bottom: 30px;
+    &-left {
+      display: flex;
+      align-items: center;
+      .cfrs-title {
+        margin-right: 15px;
+        @include heading-secondary;
+      }
+      span {
+        @include heading-secondary;
+        color: #26272e;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgb(0 0 0 / 20%);
+        border-radius: 4px;
+        padding: 6px 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+          background: #18202e;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .cfrs-bottom {
+    @include d-flex-sb;
+    gap: 20px;
+    @include smart-phone {
+      flex-direction: column;
+    }
+    &-item {
+      flex: 45%;
+      background: #fff;
+      .cfrs-item-top {
+        @include d-flex-sb;
+        padding: 10px 25px;
+        border-bottom: 1px solid #e4e4e4;
+        .cfrs-bottom-title {
+          @include subtitle;
+        }
+        .cfrs-button {
+          cursor: pointer;
+          border: 1px solid #000000;
+          outline: none;
+          padding: 8px 15px;
+          border-radius: 4px;
+          background: var(--background-color);
+          transition: all 0.3s;
+          &:hover {
+            background: #18202e;
+            color: #fff;
+          }
+        }
+      }
+      .cfrs-item-achievement {
+        @include d-flex;
+        padding: 10px 25px;
+        border-bottom: 1px solid #e4e4e4;
+        .item {
+          padding-right: 25px;
+          flex: 33%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          &:not(:first-child) {
+            border-left: 1px solid #e4e4e4;
+            padding-left: 25px;
+          }
+          .item-title {
+            @include description-grey;
+          }
+          .item-number {
+            @include heading-secondary;
+          }
+        }
+      }
+      .cfrs-item-tabel {
+        padding: 10px 25px;
+        border-bottom: 1px solid #e4e4e4;
+        .item {
+          .item-top {
+            @include d-flex-sb;
+            margin-bottom: 10px;
+            .item-top-user {
+              @include d-flex;
+              img {
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                margin-right: 8px;
+              }
+              .user-name {
+                @include description-grey;
+              }
+            }
+            .date {
+              @include description-sub;
+            }
+          }
+          .item-bottom {
+            @include d-flex-sb;
+            @include description-black;
+            span {
+              @include d-flex;
+              gap: 5px;
+            }
+          }
+          &:not(:last-child) {
+            border-bottom: 1px solid #e4e4e4;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+      .cfrs-item-pagination {
+        padding: 25px;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.pagination-contianer {
+  @include d-flex;
+  .page {
+    @include description-black;
+    margin-right: 10px;
+  }
+  .pagination-btn {
+    cursor: pointer;
+    border: 1px solid #000000;
+    outline: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--background-color);
+    margin-right: 5px;
+    &:hover {
+      background: #18202e;
+      color: #fff;
+    }
+  }
+}
