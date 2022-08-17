@@ -1,0 +1,11 @@
+{
+  "required_field": "{{key}} is required field!",
+  "wrong-format": "{{key}} is wrong format!",
+  "login-title": "Welcome to OKRs",
+  "email-placeholder": "Enter email",
+  "password-placeholder": "Enter password",
+  "forgot-password": "Forgot password",
+  "keep-logged-in": "Remember me",
+  "dont-have-acc": "Don't have an account?",
+  "create-account": "Create account"
+}
