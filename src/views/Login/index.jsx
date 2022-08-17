@@ -11,7 +11,7 @@ import { authActions } from 'redux/modules/auth';
 import { GetAuthSelector } from 'redux/selectors/auth';
 import langServices from 'services/langServices';
 
-const LoginPage2 = () => {
+const LoginPage = () => {
   //! State
   const auth = GetAuthSelector();
   const { isLogin } = auth;
@@ -66,7 +66,6 @@ const LoginPage2 = () => {
           }}
         >
           {({ values }) => {
-            console.log(values);
             return (
               <Form>
                 <h1 className="header">{t('messages:login-title')}</h1>
@@ -120,4 +119,4 @@ const LoginPage2 = () => {
   );
 };
 
-export default LoginPage2;
+export default LoginPage;
