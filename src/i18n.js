@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import enLang from './locales/en';
+import vilang from './locales/vi';
 
 i18n
   // .use(LanguageDetector)
@@ -11,6 +12,7 @@ i18n
     fallbackLng: 'en',
     resources: {
       en: enLang,
+      vi: vilang,
     },
     interpolation: {
       escapeValue: false,
