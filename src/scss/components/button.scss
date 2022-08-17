@@ -5,6 +5,11 @@
   gap: 8px;
   align-items: center;
   justify-content: center;
+  .button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .button-root:hover {
   cursor: pointer;

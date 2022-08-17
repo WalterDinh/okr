@@ -13,7 +13,7 @@ const DefaultLayout = (props) => {
     <Fragment>
       <Sidebar />
       <main className="main-container">
-        <Header />
+        <Header name="Đinh Phương" nofication={20} />
         <CommonStyles.Container>
           <Suspense fallback={<CommonStyles.Loading />}>
             <Switch>

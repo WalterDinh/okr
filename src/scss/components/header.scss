@@ -13,6 +13,12 @@
   .right {
     display: flex;
     gap: 30px;
+    .addBtn {
+      width: 100%;
+      @include tablet-down {
+        display: none;
+      }
+    }
     .utilities {
       display: flex;
       gap: 30px;
@@ -22,15 +28,15 @@
         position: relative;
         display: flex;
         .notification {
-          width: 15px;
-          height: 15px;
+          width: 20px;
+          height: 20px;
           position: absolute;
           background: red;
           display: flex;
           justify-content: center;
           align-items: center;
-          right: -5px;
-          top: -10px;
+          right: -3px;
+          top: -8px;
           border-radius: 50%;
           color: #fff;
         }
@@ -44,7 +50,7 @@
         height: 32px;
         width: 32px;
         border-radius: 50%;
-        background-image: url("./Asset/avatar.png");
+        background-image: url('./Asset/avatar.png');
       }
       .userMenu {
         position: absolute;
@@ -57,7 +63,14 @@
         border-bottom-right-radius: 4px;
         top: calc(100% + 9px);
         overflow: hidden;
-        transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1);
+        background-color: #cccccc;
+        .dropDown-btn {
+          width: 100%;
+          @include desktop {
+            display: none;
+          }
+        }
         button:hover {
           box-shadow: var(--box-shadow);
         }
