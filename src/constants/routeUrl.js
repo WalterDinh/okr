@@ -4,4 +4,6 @@ export const RouteBase = {
   Login: '/login',
   Checkin: '/checkin',
   CFRs: '/cfrs',
+  ForgotPassword: '/forgot-password',
+  ResetPassword: '/reset-password',
 };
