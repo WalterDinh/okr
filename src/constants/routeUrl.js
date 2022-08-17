@@ -3,4 +3,7 @@ export const RouteBase = {
   Dashboard: '/dashboard',
   Login: '/login',
   Checkin: '/checkin',
+  CFRs: '/cfrs',
+  ForgotPassword: '/forgot-password',
+  ResetPassword: '/reset-password',
 };

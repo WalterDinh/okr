@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 * {
   box-sizing: border-box;
+  font-family: 'Roboto';
 }
 
 html {
@@ -233,10 +236,17 @@ hr {
 
 .content-container {
   padding: 1rem;
+  // background: #e5e5e5;
+  height: 100%;
 }
 
 .main-container {
-  @include desktop {
+  // @include desktop {
+  //   padding-left: 240px;
+  // }
+  background: var(--background-color-grey);
+  min-height: 100vh;
+  @include smart-phone-down {
     padding-left: 240px;
   }
 }
