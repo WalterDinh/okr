@@ -19,6 +19,7 @@ const Input = (props) => {
           <input className="input2" style={props?.style} {...props} {...field}/>
         )}
       </div>
+      
         {isErrors && <div className="error">{errorMessage}</div>}
     </>
   );
