@@ -215,7 +215,7 @@
   height: 100vh;
   color: #fff;
   transition: all 0.2s;
-
+  z-index: 5;
   .sidebar-top {
     height: 56px;
     cursor: pointer;
@@ -277,7 +277,7 @@
   top: 15px;
   left: 240px;
   color: #18202e;
-
+  z-index: 5;
   width: 25px;
   height: 25px;
   align-items: center;
