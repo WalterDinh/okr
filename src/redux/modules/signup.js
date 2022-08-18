@@ -25,7 +25,7 @@ export const signupSaga = {
             yield call(() => axios.post(USER_URL, { email, name, password }));
             yield put({ type: authActions.loginSuccess, payload: { email, name } });
           } catch (error) {
-            yield put({ type: authActions.loginFailed, payload: { message: 'Signup failed' } });
+            yield put({ type: authActions.loginFailed, payload: 'Signup failed' });
           }
         }
       } catch (error) {

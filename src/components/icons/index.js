@@ -3,8 +3,8 @@ import {
   MdAlarm,
   MdMailOutline,
   MdLockOutline,
-  MdOutlinePersonOutline,
   MdStar,
+  MdOutlinePersonOutline,
 } from 'react-icons/md';
 import { AiFillStar } from 'react-icons/ai';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
@@ -15,7 +15,6 @@ export default {
   Clock: MdAlarm,
   Mail: MdMailOutline,
   Password: MdLockOutline,
-  User: MdOutlinePersonOutline,
   Star: AiFillStar,
   Champion: EmojiEventsIcon,
   Alytics: SiSimpleanalytics,
