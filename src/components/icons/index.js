@@ -16,6 +16,7 @@ export default {
   Mail: MdMailOutline,
   Password: MdLockOutline,
   Star: AiFillStar,
+  User: MdOutlinePersonOutline,
   Champion: EmojiEventsIcon,
   Alytics: SiSimpleanalytics,
 };
