@@ -9,6 +9,7 @@ import { RouteBase } from 'constants/routeUrl';
 
 import CommonStyles from 'components/CommonStyles';
 import CommonIcons from 'components/icons';
+import { passwordRegex } from 'constants';
 import * as yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 import { LinearProgress, Box } from '@mui/material';
@@ -29,18 +30,12 @@ const SignupPage = () => {
 
     password: yup
       .string()
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$/,
-        t('messages:wrong-format', { key: t('common:password') }),
-      )
+      .matches(passwordRegex, t('messages:wrong-format', { key: t('common:password') }))
       .required(t('messages:required_field', { key: t('common:password') })),
 
     reEnterPassword: yup
       .string()
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$/,
-        t('messages:wrong-format', { key: t('common:password') }),
-      )
+      .matches(passwordRegex, t('messages:wrong-format', { key: t('common:password') }))
       .required(t('messages:required_field', { key: t('common:re-enter-password') })),
   });
 
