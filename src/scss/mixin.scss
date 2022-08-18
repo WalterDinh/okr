@@ -54,6 +54,15 @@
   color: var(--color-white);
 }
 
+@mixin description-light-b {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--color-white);
+}
+
 @mixin description-black {
   font-family: 'Roboto';
   font-style: normal;

@@ -6,11 +6,26 @@ import CfrsItemTop from './components/CfrsItemTop';
 import CfrsAchievement from './components/CfrsAchievement';
 import CfrsFeedback from './components/CfrsFeedback';
 
+import { useHistory, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 const CFRs = () => {
+  //! State
+  const history = useHistory();
+  const { id } = useParams();
+  const { t } = useTranslation();
+
+  //!Function
+  const handleClick = () => {
+    console.log('click');
+    history.push('/cfrs/feedback');
+  };
+
+  //! Render
   return (
     <div>
       <div className="cfrs-container">
-        <Cfrstop title="Phản hồi và ghi nhận" star="345" label="Tạo phản hồi và ghi nhận" />
+        <Cfrstop title="Phản hồi và ghi nhận" star="345" label="Tạo phản hồi và ghi nhận" handleClick={handleClick} />
 
         <div className="cfrs-bottom">
           {/* Left */}
