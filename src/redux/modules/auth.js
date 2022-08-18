@@ -5,6 +5,7 @@ import authServices from 'services/authServices';
 //! Actions
 export const authActions = {
   login: 'login',
+  loginStart: 'loginStart',
   loginSuccess: 'loginSuccess',
   loginFailed: 'loginFailed',
   logout: 'logout',
@@ -50,20 +51,31 @@ export const authReducer = (
   state = {
     auth: {
       isLogin: false,
+      isLogging: false,
       error: null,
     },
+    user: {},
   },
   action,
 ) => {
   return produce(state, (draftState) => {
     switch (action.type) {
+      case authActions.loginStart: {
+        draftState.auth.isLogging = true;
+        draftState.auth.error = null;
+        break;
+      }
+
       case authActions.loginSuccess: {
         draftState.auth.isLogin = true;
+        draftState.auth.isLogging = false;
+        draftState.user = { ...action.payload };
         break;
       }
 
       case authActions.loginFailed: {
-        draftState.auth.isLogin = false;
+        draftState.auth.isLogging = false;
+        draftState.auth.error = action.payload;
         break;
       }
 

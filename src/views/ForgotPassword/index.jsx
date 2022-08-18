@@ -20,11 +20,9 @@ const ForgotPasswordPage = () => {
     <div className="container-auth">
       <div className="form-auth">
         <Formik
-          initialValues={{ email: ''}}
+          initialValues={{ email: '' }}
           validationSchema={ForgotPasswordSchema}
-          onSubmit={(values, actions) => {
-            
-          }}
+          onSubmit={(values, actions) => {}}
         >
           <Form>
             <h1 className="heading">{t('forgotpassword:ForgotPassword')}</h1>
@@ -40,7 +38,7 @@ const ForgotPasswordPage = () => {
               style={{ width: '100%', marginTop: '16px' }}
               type="primary"
               borderRadius="round"
-              innerText ={t('forgotpassword:Next')}
+              innerText={t('forgotpassword:Next')}
             />
           </Form>
         </Formik>
