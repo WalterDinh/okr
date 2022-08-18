@@ -13,6 +13,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.21.1",
+    "chart.js": "^3.9.1",
     "eslint": "^7.27.0",
     "flat": "^5.0.2",
     "formik": "^2.1.6",
@@ -20,6 +21,7 @@
     "immer": "^8.0.1",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
+    "react-chartjs-2": "^4.3.1",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.11.0",
     "react-icons": "^4.4.0",
@@ -57,16 +59,16 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^9.8.6",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-graphql": "^4.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.2",
-    "prettier": "^2.2.1",
-    "autoprefixer": "^9.8.6",
     "postcss": "^8.0.0",
-    "postcss-cli": "^8.1.0"
+    "postcss-cli": "^8.1.0",
+    "prettier": "^2.2.1"
   },
   "husky": {
     "hooks": {

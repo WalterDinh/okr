@@ -235,18 +235,15 @@ hr {
 }
 
 .content-container {
-  padding: 1rem;
-  // background: #e5e5e5;
-  height: 100%;
+  padding: 32px 32px 24px 24px ;
 }
 
 .main-container {
-  // @include desktop {
-  //   padding-left: 240px;
-  // }
-  background: var(--background-color-grey);
-  min-height: 100vh;
-  @include smart-phone-down {
+  background-color: #E5E5E5;
+  @include desktop {
+    padding-left: 240px;
+  }
+  @include tablet-down {
     padding-left: 240px;
   }
 }
