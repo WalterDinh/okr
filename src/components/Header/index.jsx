@@ -1,16 +1,19 @@
 import React, { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
+import useSagaCreators from 'hooks/useSagaCreators';
 
 import Button from 'components/CommonStyles/Button';
 import CommonIcons from 'components/icons';
 import { SIZE_ICON } from 'constants';
 import { RouteBase } from 'constants/routeUrl';
+import { authActions } from 'redux/modules/auth';
 
 const Header = ({ onClick, nofication, name, onClickBack }) => {
   //! State
   const { t } = useTranslation();
   const history = useHistory();
+  const { dispatch } = useSagaCreators();
   const [dropDown, setDropdown] = useState(false);
   const isBack = typeof onClickBack !== 'undefined';
 
@@ -55,7 +58,9 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
     {
       name: t('common:logout'),
       icon: <CommonIcons.Logout size={20} style={{ transform: 'rotate(-90deg)', color: 'rgba(0,0,0,0.5)' }} />,
-      onClick: () => {},
+      onClick: () => {
+        dispatch(authActions.logout);
+      },
     },
   ];
   //! Function
