@@ -10,32 +10,43 @@
     background-color: #e5e5e5;
     form {
       max-width: 432px;
-    }
-    .header {
-      font-size: 36px;
-      font-weight: bold;
-      margin-bottom: 56px;
-    }
-    .inputField {
-      margin-bottom: 24px;
-    }
-    .utilities {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 36px;
-      margin-top: 8px;
-      align-items: center;
-      .remember {
-        display: flex;
-        align-items: center;
+      .header {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 56px;
       }
-    }
-    .createAcc {
-      margin-top: 24px;
-      display: flex;
-      gap: 5px;
-      .question {
-        color: #949494;
+      .inputField {
+        margin-bottom: 24px;
+      }
+      .utilities {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 36px;
+        margin-top: 8px;
+        align-items: center;
+        .remember {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .createAcc {
+        margin-top: 24px;
+        display: flex;
+        gap: 5px;
+        .question {
+          color: #949494;
+        }
+      }
+      .errorMess {
+        width: 100%;
+        margin-top: 24px;
+        min-height: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .error {
+          color: #ff0000;
+        }
       }
     }
   }

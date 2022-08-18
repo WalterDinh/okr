@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Input = (props) => {
-  const { field, form, label, icon } = props;
+  const { field, form, label, iconplaceholder, style, type } = props;
   const { name } = field;
   const { errors, touched } = form;
 
@@ -19,7 +19,6 @@ const Input = (props) => {
           <input className="input2" style={props?.style} {...props} {...field} />
         )}
       </div>
-
       {isErrors && <div className="error">{errorMessage}</div>}
     </>
   );

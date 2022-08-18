@@ -1,4 +1,11 @@
-import { MdOutlineNotifications, MdAlarm, MdMailOutline, MdLockOutline, MdStar } from 'react-icons/md';
+import {
+  MdOutlineNotifications,
+  MdAlarm,
+  MdMailOutline,
+  MdLockOutline,
+  MdStar,
+  MdOutlinePersonOutline,
+} from 'react-icons/md';
 import { AiFillStar } from 'react-icons/ai';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { SiSimpleanalytics } from 'react-icons/si';
@@ -9,6 +16,7 @@ export default {
   Mail: MdMailOutline,
   Password: MdLockOutline,
   Star: AiFillStar,
+  User: MdOutlinePersonOutline,
   Champion: EmojiEventsIcon,
   Alytics: SiSimpleanalytics,
 };
