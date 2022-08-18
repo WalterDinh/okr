@@ -1,4 +1,6 @@
-import { put } from '@redux-saga/core/effects';
+import { put, call } from '@redux-saga/core/effects';
+import axios from 'axios';
+import { USER_URL } from 'constants/api';
 import produce from 'immer';
 import authServices from 'services/authServices';
 
@@ -32,15 +34,19 @@ export const authSaga = {
   },
   [authActions.login]: {
     saga: function* ({ payload }) {
-      const { email, password, keepLoggedIn, callbacks } = payload;
-
-      if (email === 'don@gmail.com' && password === 'PQdon@123') {
-        keepLoggedIn && authServices.saveUserLocalStorage({ email, isLogged: true });
-        yield put({ type: authActions.loginSuccess });
-        callbacks && callbacks.onSuccess();
-      } else {
-        yield put({ type: authActions.loginFailed });
-        callbacks && callbacks.onFailed();
+      yield put({ type: authActions.loginStart });
+      const { email, password, keepLoggedIn } = payload;
+      try {
+        const getUser = yield call(() => axios.get(`${USER_URL}?email=${email}&password=${password}`));
+        if (getUser.data.length > 0) {
+          const user = getUser.data[0];
+          keepLoggedIn && authServices.saveUserLocalStorage({ email, isLogged: true });
+          yield put({ type: authActions.loginSuccess, payload: user });
+        } else {
+          yield put({ type: authActions.loginFailed, payload: 'Email or password is incorrect' });
+        }
+      } catch (error) {
+        yield put({ type: authActions.loginFailed, payload: 'Login failed' });
       }
     },
   },

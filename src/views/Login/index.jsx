@@ -9,12 +9,13 @@ import useSagaCreators from 'hooks/useSagaCreators';
 import { RouteBase } from 'constants/routeUrl';
 import { authActions } from 'redux/modules/auth';
 import { GetAuthSelector } from 'redux/selectors/auth';
+import { Box, LinearProgress } from '@mui/material';
 import langServices from 'services/langServices';
 
 const LoginPage = () => {
   //! State
   const auth = GetAuthSelector();
-  const { isLogin } = auth;
+  const { isLogin, isLogging, error } = auth;
 
   const { t } = useTranslation();
   const { dispatch } = useSagaCreators();
@@ -108,6 +109,14 @@ const LoginPage = () => {
                 <div className="createAcc">
                   <span className="question">{t('messages:dont-have-acc')}</span>
                   <Link to="/sign-up">{t('messages:create-account')}</Link>
+                </div>
+                <div className="errorMess">
+                  {isLogging && (
+                    <Box sx={{ width: '100%' }}>
+                      <LinearProgress />
+                    </Box>
+                  )}
+                  {error && <span className="error">{error}</span>}
                 </div>
               </Form>
             );
