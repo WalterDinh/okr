@@ -1,6 +1,4 @@
 import { put, call } from '@redux-saga/core/effects';
-import axios from 'axios';
-import { USER_URL } from 'constants/api';
 import produce from 'immer';
 import authServices from 'services/authServices';
 
@@ -35,18 +33,19 @@ export const authSaga = {
   [authActions.login]: {
     saga: function* ({ payload }) {
       yield put({ type: authActions.loginStart });
-      const { email, password, keepLoggedIn } = payload;
+      const { email, password, keepLoggedIn, callbacks } = payload;
       try {
-        const getUser = yield call(() => axios.get(`${USER_URL}?email=${email}&password=${password}`));
+        const getUser = yield call(authServices.login, { email, password });
         if (getUser.data.length > 0) {
           const user = getUser.data[0];
           keepLoggedIn && authServices.saveUserLocalStorage({ email, isLogged: true });
           yield put({ type: authActions.loginSuccess, payload: user });
+          callbacks && callbacks.onSuccess();
         } else {
-          yield put({ type: authActions.loginFailed, payload: 'Email or password is incorrect' });
+          callbacks && callbacks.onFailed('Email or password is incorrect');
         }
       } catch (error) {
-        yield put({ type: authActions.loginFailed, payload: 'Login failed' });
+        callbacks && callbacks.onFailed('Login failed');
       }
     },
   },
@@ -57,8 +56,6 @@ export const authReducer = (
   state = {
     auth: {
       isLogin: false,
-      isLogging: false,
-      error: null,
     },
     user: {},
   },
@@ -66,22 +63,9 @@ export const authReducer = (
 ) => {
   return produce(state, (draftState) => {
     switch (action.type) {
-      case authActions.loginStart: {
-        draftState.auth.isLogging = true;
-        draftState.auth.error = null;
-        break;
-      }
-
       case authActions.loginSuccess: {
         draftState.auth.isLogin = true;
-        draftState.auth.isLogging = false;
         draftState.user = { ...action.payload };
-        break;
-      }
-
-      case authActions.loginFailed: {
-        draftState.auth.isLogging = false;
-        draftState.auth.error = action.payload;
         break;
       }
 
