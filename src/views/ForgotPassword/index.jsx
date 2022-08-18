@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import CommonStyles from 'components/CommonStyles';
-import { MdMailOutline } from 'react-icons/md';
+import CommonIcons from '../../components/icons';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,9 @@ const ForgotPasswordPage = () => {
 
   //! Function
   const ForgotPasswordSchema = Yup.object().shape({
-    email: Yup.string().email(t('forgotpassword:InvalidEmail')).required(t('forgotpassword:RequiredEmail')),
+    email: Yup.string()
+      .email(t('messages:wrong-format', { key: t('common:email') }))
+      .required(t('messages:required_field', { key: t('common:email') })),
   });
 
   //! Render
@@ -29,10 +31,10 @@ const ForgotPasswordPage = () => {
             <h3 className="description-heading">{t('forgotpassword:ImportEmailToRestorePassword')}</h3>
             <Field
               name="email"
-              placeholder={t('forgotpassword:PlaceholderEmail')}
               component={CommonStyles.Input}
-              label={t('forgotpassword:EmailLabel')}
-              icon={<MdMailOutline />}
+              placeholder={t('messages:email-placeholder')}
+              label={t('common:email-label')}
+              icon={<CommonIcons.Mail />}
             />
             <CommonStyles.Button
               style={{ width: '100%', marginTop: '16px' }}
