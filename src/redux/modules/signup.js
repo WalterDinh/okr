@@ -16,7 +16,7 @@ export const signupSaga = {
       yield put({ type: authActions.loginStart });
       const { email, name, password } = payload;
       try {
-        const getUser = yield call(() => axios.get('USER_URL' + `?email=${email}`));
+        const getUser = yield call(() => axios.get(USER_URL + `?email=${email}`));
 
         if (getUser.data.length > 0) {
           yield put({ type: authActions.loginFailed, payload: 'Email already exists' });
