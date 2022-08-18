@@ -19,6 +19,7 @@
   color: #ffffff;
   transition: all 0.3s;
   &:hover {
+    border: solid 1px var(--color-black);
     background-color: var(--color-white);
     color: var(--color-black);
   }

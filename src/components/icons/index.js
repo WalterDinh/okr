@@ -3,10 +3,11 @@ import {
   MdAlarm,
   MdMailOutline,
   MdLockOutline,
-  MdStar,
+  MdSettings,
   MdOutlinePersonOutline,
+  MdKeyboardBackspace,
 } from 'react-icons/md';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineLogout, AiOutlinePlus, AiOutlineDown } from 'react-icons/ai';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { SiSimpleanalytics } from 'react-icons/si';
 
@@ -15,8 +16,13 @@ export default {
   Clock: MdAlarm,
   Mail: MdMailOutline,
   Password: MdLockOutline,
-  Star: AiFillStar,
+  Setting: MdSettings,
   User: MdOutlinePersonOutline,
+  Back: MdKeyboardBackspace,
+  Star: AiFillStar,
+  Logout: AiOutlineLogout,
+  Add: AiOutlinePlus,
+  Down: AiOutlineDown,
   Champion: EmojiEventsIcon,
   Alytics: SiSimpleanalytics,
 };

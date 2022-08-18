@@ -1,31 +1,16 @@
 import React, { Fragment, useState } from 'react';
-import { HiPlus } from 'react-icons/hi';
-import { AiOutlineDown } from 'react-icons/ai';
-import { BiArrowBack } from 'react-icons/bi';
+import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
+
 import Button from 'components/CommonStyles/Button';
 import CommonIcons from 'components/icons';
-import { useTranslation } from 'react-i18next';
 import { SIZE_ICON } from 'constants';
-
-const userMenu = [
-  {
-    name: 'Profile',
-    onClick: () => {},
-  },
-  {
-    name: 'Settings',
-    onClick: () => {},
-  },
-  {
-    name: 'Logout',
-    onClick: () => {},
-  },
-];
+import { RouteBase } from 'constants/routeUrl';
 
 const Header = ({ onClick, nofication, name, onClickBack }) => {
   //! State
   const { t } = useTranslation();
-  console.log(useTranslation());
+  const history = useHistory();
   const [dropDown, setDropdown] = useState(false);
   const isBack = typeof onClickBack !== 'undefined';
 
@@ -38,7 +23,6 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
     },
     'Button-2': {
       padding: '8px 16px',
-      border: '0',
       minHeight: 'unset',
     },
     'Button-3': {
@@ -50,11 +34,30 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
     'Button-4': {
       border: '0',
       borderTop: 'solid 1px #C4C4C4',
-      padding: '10px 0',
+      padding: '16px',
       background: 'transparent',
       width: '100%',
+      justifyContent: 'left',
     },
   };
+
+  const userMenu = [
+    {
+      name: t('common:setting'),
+      icon: <CommonIcons.Setting size={20} style={{ color: 'rgba(0,0,0,0.5)' }} />,
+      onClick: () => {},
+    },
+    {
+      name: t('common:user-profile'),
+      icon: <CommonIcons.User size={20} style={{ color: 'rgba(0,0,0,0.5)' }} />,
+      onClick: () => history.push(RouteBase.UserProfile),
+    },
+    {
+      name: t('common:logout'),
+      icon: <CommonIcons.Logout size={20} style={{ transform: 'rotate(-90deg)', color: 'rgba(0,0,0,0.5)' }} />,
+      onClick: () => {},
+    },
+  ];
   //! Function
 
   //! Render
@@ -71,7 +74,7 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
             <Button
               onClick={onClickBack}
               innerText=""
-              icon={<BiArrowBack />}
+              icon={<CommonIcons.Back />}
               type="secondary"
               style={buttonStyle['Button-1']}
             ></Button>
@@ -83,7 +86,7 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
               type="primary"
               innerText={t('messages:add')}
               onClick={onClick}
-              icon={<HiPlus />}
+              icon={<CommonIcons.Add />}
               borderRadius="round"
               style={buttonStyle['Button-2']}
             />
@@ -104,14 +107,14 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
               }}
               icon={
                 dropDown ? (
-                  <AiOutlineDown
+                  <CommonIcons.Down
                     style={{
                       transform: 'rotate(180deg)',
                       transition: 'all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                     }}
                   />
                 ) : (
-                  <AiOutlineDown
+                  <CommonIcons.Down
                     style={{
                       transition: 'all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                     }}
@@ -132,7 +135,7 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
                 type="primary"
                 innerText={t('messages:add')}
                 onClick={onClick}
-                icon={<HiPlus />}
+                icon={<CommonIcons.Add />}
                 borderRadius="round"
                 style={{ width: '100%' }}
               />
@@ -143,6 +146,7 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
                 type="secondary"
                 onClick={item.onClick}
                 key={index}
+                icon={item.icon}
                 style={buttonStyle['Button-4']}
               />
             ))}
