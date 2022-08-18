@@ -1,6 +1,7 @@
 import flatten from 'flat';
 import header from './header.json';
 import forgotpassword from './forgotpassword.json';
+import resetpassword from './resetpassword.json';
 import common from './common.json';
 import messages from './messages.json';
 
@@ -15,6 +16,9 @@ const locale = {
     delimiter: '_',
   }),
   forgotpassword: flatten(forgotpassword, {
+    delimiter: '_',
+  }),
+  resetpassword: flatten(resetpassword, {
     delimiter: '_',
   }),
 };
