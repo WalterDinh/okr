@@ -16,7 +16,7 @@ export const signupSaga = {
       yield put({ type: authActions.loginStart });
       const { email, name, password } = payload;
       try {
-        const getUser = yield call(() => axios.get(USER_URL + `?email=${email}`));
+        const getUser = yield call(() => axios.get('USER_URL' + `?email=${email}`));
 
         if (getUser.data.length > 0) {
           yield put({ type: authActions.loginFailed, payload: 'Email already exists' });
@@ -25,11 +25,11 @@ export const signupSaga = {
             yield call(() => axios.post(USER_URL, { email, name, password }));
             yield put({ type: authActions.loginSuccess, payload: { email, name } });
           } catch (error) {
-            yield put({ type: authActions.loginFailed, payload: { message: error } });
+            yield put({ type: authActions.loginFailed, payload: { message: 'Signup failed' } });
           }
         }
       } catch (error) {
-        yield put({ type: authActions.loginFailed, payload: error });
+        yield put({ type: authActions.loginFailed, payload: 'Signup failed' });
       }
     },
   },
