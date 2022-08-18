@@ -4,5 +4,6 @@
   "email-label": "Email address",
   "submit": "Submit",
   "name": "Your name",
-  "re-enter-password": "Re-enter password"
+  "re-enter-password": "Re-enter password",
+  "search":"Search"
 }

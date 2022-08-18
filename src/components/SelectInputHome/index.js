@@ -7,7 +7,6 @@ function SelectInputHome(props) {
   const [age, setAge] = React.useState('');
 
   const handleChange = (e) => {
-    console.log('e.target.value: ', e.target.value);
     setAge(e.target.value);
     // onChangeSelectInput(e.target.value);
   };
