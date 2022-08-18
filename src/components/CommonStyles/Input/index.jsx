@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Input = (props) => {
-  const { field, form, label, icon,  } = props;
+  const { field, form, label, icon, placeholder, style, type } = props;
   const { name } = field;
   const { errors, touched } = form;
 
@@ -11,16 +11,11 @@ const Input = (props) => {
   return (
     <>
       {label && <div className="label">{label}</div>}
-      <div className="search-box">
-        {icon && <div className="icon">{props?.icon}</div>}
-        {icon ? (
-          <input className="input" style={props?.style} {...props} {...field}/>
-        ) : (
-          <input className="input2" style={props?.style} {...props} {...field}/>
-        )}
+      <div className="search-box" style={style}>
+        {icon && <div className="icon">{icon}</div>}
+        <input className={icon ? 'input' : 'input2'} type={type} placeholder={placeholder} {...field} />
       </div>
-      
-        {isErrors && <div className="error">{errorMessage}</div>}
+      {isErrors && <div className="error">{errorMessage}</div>}
     </>
   );
 };

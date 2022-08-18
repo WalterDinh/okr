@@ -10,7 +10,13 @@
 
     .filter-left {
       display: flex;
-      gap: 16px;
+      gap: 0 16px;
+      @include smart-phone {
+        flex-direction: column;
+      }
+    }
+    @include tablet-down {
+      flex-direction: column;
     }
   }
 

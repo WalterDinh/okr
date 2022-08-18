@@ -1,22 +1,23 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import * as yup from 'yup';
+import { Link, Redirect } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+
+import useSagaCreators from 'hooks/useSagaCreators';
+import { GetAuthSelector } from 'redux/selectors';
+import { signupActions } from 'redux/modules/signup';
+import { RouteBase } from 'constants/routeUrl';
+
 import CommonStyles from 'components/CommonStyles';
 import CommonIcons from 'components/icons';
-import { Link, Redirect } from 'react-router-dom';
-import useSagaCreators from 'hooks/useSagaCreators';
-import { RouteBase } from 'constants/routeUrl';
-import { authActions } from 'redux/modules/auth';
-import { GetAuthSelector } from 'redux/selectors/auth';
-import { Box, LinearProgress } from '@mui/material';
-import langServices from 'services/langServices';
+import { passwordRegex } from 'constants';
+import * as yup from 'yup';
+import { Formik, Form, Field } from 'formik';
+import { LinearProgress, Box } from '@mui/material';
+// import langServices from 'services/langServices';
 
-const LoginPage = () => {
+const SignupPage = () => {
   //! State
-  const auth = GetAuthSelector();
-  const { isLogin, isLogging, error } = auth;
-
+  const { isLogin, error, isLogging } = GetAuthSelector();
   const { t } = useTranslation();
   const { dispatch } = useSagaCreators();
   const validationSchema = yup.object().shape({
@@ -24,49 +25,54 @@ const LoginPage = () => {
       .string()
       .email(t('messages:wrong-format', { key: t('common:email') }))
       .required(t('messages:required_field', { key: t('common:email') })),
+
+    name: yup.string().required(t('messages:required_field', { key: t('common:name') })),
+
     password: yup
       .string()
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/,
-        t('messages:wrong-format', { key: t('common:password') }),
-      )
+      .matches(passwordRegex, t('messages:wrong-format', { key: t('common:password') }))
       .required(t('messages:required_field', { key: t('common:password') })),
+
+    reEnterPassword: yup
+      .string()
+      .matches(passwordRegex, t('messages:wrong-format', { key: t('common:password') }))
+      .required(t('messages:required_field', { key: t('common:re-enter-password') })),
   });
 
   //! Function
-
   if (isLogin) {
-    return <Redirect to={RouteBase.Home} />;
+    return <Redirect to={RouteBase.Login} />;
   }
 
   //! Rendert
+
   return (
     <div className="login-container">
+      <LinearProgress />
       <div className="login-form">
         <Formik
           initialValues={{
             email: '',
+            name: '',
             password: '',
-            keepLoggedIn: false,
+            reEnterPassword: '',
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            const { email, password, keepLoggedIn } = values;
-            try {
-              //* 1 Call API Login
-              dispatch(authActions.login, {
-                email,
-                password,
-                keepLoggedIn,
-                callbacks: {
-                  onSuccess: () => {},
-                  onFailed: () => {},
-                },
-              });
-            } catch (error) {}
+            if (values.password === values.reEnterPassword) {
+              try {
+                dispatch(signupActions.signup, {
+                  email: values.email,
+                  name: values.name,
+                  password: values.password,
+                });
+              } catch (error) {}
+            } else {
+              alert('Password not match');
+            }
           }}
         >
-          {({ values }) => {
+          {({ isSubmitting }) => {
             return (
               <Form>
                 <h1 className="header">{t('messages:login-title')}</h1>
@@ -83,6 +89,16 @@ const LoginPage = () => {
 
                 <div className="inputField">
                   <Field
+                    name="name"
+                    component={CommonStyles.Input}
+                    icon={<CommonIcons.User />}
+                    placeholder={t('messages:name-placeholder')}
+                    label={t('common:name')}
+                  />
+                </div>
+
+                <div className="inputField">
+                  <Field
                     name="password"
                     type="password"
                     component={CommonStyles.Input}
@@ -92,12 +108,15 @@ const LoginPage = () => {
                   />
                 </div>
 
-                <div className="utilities">
-                  <div className="remember">
-                    <Field name="keepLoggedIn" component="input" type="checkbox" />
-                    {t('messages:keep-logged-in')}
-                  </div>
-                  <Link to="/forgot-password">{t('messages:forgot-password')}</Link>
+                <div className="inputField">
+                  <Field
+                    name="reEnterPassword"
+                    type="password"
+                    component={CommonStyles.Input}
+                    icon={<CommonIcons.Password />}
+                    placeholder={t('messages:reenter-password-placeholder')}
+                    label={t('common:re-enter-password')}
+                  />
                 </div>
 
                 <CommonStyles.Button
@@ -105,10 +124,12 @@ const LoginPage = () => {
                   innerText={t('common:submit')}
                   borderRadius="round"
                   style={{ width: '100%' }}
+                  disabled={isSubmitting}
                 />
+
                 <div className="createAcc">
-                  <span className="question">{t('messages:dont-have-acc')}</span>
-                  <Link to="/sign-up">{t('messages:create-account')}</Link>
+                  <span className="question">{t('messages:already-have-acc')}</span>
+                  <Link to="/sign-up">{t('messages:sign-in')}</Link>
                 </div>
                 <div className="errorMess">
                   {isLogging && (
@@ -128,4 +149,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;

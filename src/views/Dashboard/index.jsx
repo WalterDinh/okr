@@ -3,6 +3,7 @@ import React from 'react';
 import SelectInputHome from 'components/SelectInputHome';
 import CommonIcons from 'components/icons';
 import LineChart from 'components/Chart/LineChart';
+import InputOutForm from 'components/CommonStyles/InputOutForm';
 
 //!Fake data chart
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -80,13 +81,17 @@ const Dashboard = (props) => {
           <SelectInputHome
             width="300px"
             placeholder="Chọn phòng ban"
-            onChangeSelectInput={(data) => console.log(data)}
+            // onChangeSelectInput={(data) => console.log(data)}
             listOption={fakeListOption}
           />
           <SelectInputHome width="157px" placeholder="Quý 1-2021" listOption={fakeListOption} />
         </div>
         <div className="filter-right">
-          {/* <Input style={{ borderRadius: 'none' }} icon={<CommonIcons.Search />}  /> */}
+          <InputOutForm
+            icon={<CommonIcons.Search />}
+            placeholder="Tim kiem"
+            style={{ width: 300, height: 40, borderRadius: 0 }}
+          />
         </div>
       </div>
       <div className="progress">
