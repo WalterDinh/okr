@@ -1,13 +1,14 @@
 import CommonStyles from 'components/CommonStyles';
 import EachTodo from 'components/EachTodo';
+import SelectInputForm from 'components/SelectInputForm';
 import SelectInputHome from 'components/SelectInputHome';
+import { Field, Form, Formik } from 'formik';
 import useGetListTodos from 'hooks/todos/useGetListTodos';
 import useSagaCreators from 'hooks/useSagaCreators';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { authActions, logout } from 'redux/modules/auth';
 
-const listOption=[{value:1,label:'a'}]
 const HomePage = (props) => {
   //! State
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ const HomePage = (props) => {
   return (
     <div>
       <h3>{t('message:hello')}</h3>
-      <SelectInputHome placeholder='anc' listOption={listOption} width='300px' />
+
       <button onClick={onLogout}>Logout</button>
       {loading ? (
         'Loading ...'

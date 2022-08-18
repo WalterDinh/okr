@@ -1,22 +1,39 @@
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { red } from '@mui/material/colors';
 import React from 'react';
 
 function SelectInputHome(props) {
   const { placeholder, listOption, width, onChangeSelectInput } = props;
+  const [age, setAge] = React.useState('');
 
   const handleChange = (e) => {
     console.log('e.target.value: ', e.target.value);
-    onChangeSelectInput(e.target.value);
+    setAge(e.target.value);
+    // onChangeSelectInput(e.target.value);
   };
   return (
     <div className="select-input-home">
-      <select className="select-input" style={{ width: `${width}` }} onChange={handleChange}>
-        <option value="">{placeholder}</option>
-        {listOption?.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
+      <Select
+        displayEmpty
+        value={age}
+        sx={{ height: '100%', width: width, borderRadius: 0, backgroundColor: 'white' }}
+        onChange={handleChange}
+        renderValue={(selected) => {
+          if (!selected) {
+            return <em>{placeholder}</em>;
+          }
+          return selected;
+        }}
+      >
+        <MenuItem disabled value="">
+          <em>{placeholder}</em>
+        </MenuItem>
+        {listOption.map((item) => (
+          <MenuItem key={item.value} value={item.value}>
+            {item.label}
+          </MenuItem>
         ))}
-      </select>
+      </Select>
     </div>
   );
 }
