@@ -17,6 +17,11 @@
 .button-primary {
   background-color: #18202e;
   color: #ffffff;
+  transition: all 0.3s;
+  &:hover {
+    background-color: var(--color-white);
+    color: var(--color-black);
+  }
 }
 .button-secondary {
   background-color: rgba(255, 255, 255, 0.2);
