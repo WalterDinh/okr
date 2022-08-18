@@ -13,6 +13,5 @@
   "name-placeholder": "Enter your name",
   "reenter-password-placeholder": "Re-enter password",
   "min-length": "{{key}} must be at least {{min}} characters long!",
-  "max-length": "{{key}} must be at most {{max}} characters long!",
-  "feedback": "Feedback and Confirm"
+  "max-length": "{{key}} must be at most {{max}} characters long!"
 }
