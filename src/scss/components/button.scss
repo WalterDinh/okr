@@ -15,10 +15,11 @@
   cursor: pointer;
 }
 .button-primary {
-  background-color: #18202e;
+  background-color: var(--background-color-sub);
   color: #ffffff;
   transition: all 0.3s;
   &:hover {
+    border: solid 1px var(--color-black);
     background-color: var(--color-white);
     color: var(--color-black);
   }
@@ -26,6 +27,19 @@
 .button-secondary {
   background-color: rgba(255, 255, 255, 0.2);
   border: solid 1px #000000;
+}
+.button-secondary-gray {
+  cursor: pointer;
+  border: 1px solid #efefef;
+  outline: none;
+  padding: 8px 15px;
+  background: var(--background-color);
+  transition: all 0.3s;
+  &:hover {
+    border: 1px solid #18202e;
+    background: #18202e;
+    color: #fff;
+  }
 }
 .button-radius {
   border-radius: 4px;

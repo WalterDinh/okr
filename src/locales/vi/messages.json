@@ -3,5 +3,6 @@
   "wrong-format": "{{key}} không đúng định dạng",
   "login-title": "Chào mừng bạn đến với OKRs",
   "email-placeholder": "Nhập email",
-  "password-placeholder": "Nhập mật khẩu"
+  "password-placeholder": "Nhập mật khẩu",
+  "feedback": "Phản hồi và ghi nhận"
 }

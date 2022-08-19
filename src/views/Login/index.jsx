@@ -11,11 +11,14 @@ import { authActions } from 'redux/modules/auth';
 import { GetAuthSelector } from 'redux/selectors/auth';
 import { Box, LinearProgress } from '@mui/material';
 import langServices from 'services/langServices';
+import { useState } from 'react';
 
 const LoginPage = () => {
   //! State
   const auth = GetAuthSelector();
-  const { isLogin, isLogging, error } = auth;
+  const { isLogin } = auth;
+  const [isLogging, setIsLogging] = useState(false);
+  const [error, setError] = useState(null);
 
   const { t } = useTranslation();
   const { dispatch } = useSagaCreators();
@@ -53,20 +56,26 @@ const LoginPage = () => {
           onSubmit={(values) => {
             const { email, password, keepLoggedIn } = values;
             try {
-              //* 1 Call API Login
+              setIsLogging(true);
+              setError(null);
               dispatch(authActions.login, {
                 email,
                 password,
                 keepLoggedIn,
                 callbacks: {
-                  onSuccess: () => {},
-                  onFailed: () => {},
+                  onSuccess: () => {
+                    setIsLogging(false);
+                  },
+                  onFailed: (error) => {
+                    setIsLogging(false);
+                    setError(error);
+                  },
                 },
               });
             } catch (error) {}
           }}
         >
-          {({ values }) => {
+          {({}) => {
             return (
               <Form>
                 <h1 className="header">{t('messages:login-title')}</h1>

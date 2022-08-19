@@ -1,4 +1,5 @@
 .cfrs-container {
+  padding: 24px;
   .cfrs-top {
     @include d-flex-sb;
     margin-bottom: 30px;
@@ -35,8 +36,11 @@
       flex-direction: column;
     }
     &-item {
-      flex: 45%;
+      width: 100%;
       background: #fff;
+      @include smart-phone {
+        width: 80%;
+      }
       .cfrs-item-top {
         @include d-flex-sb;
         padding: 10px 25px;

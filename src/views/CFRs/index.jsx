@@ -6,25 +6,57 @@ import CfrsItemTop from './components/CfrsItemTop';
 import CfrsAchievement from './components/CfrsAchievement';
 import CfrsFeedback from './components/CfrsFeedback';
 
+import { useHistory, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 const CFRs = () => {
+  //! State
+  const history = useHistory();
+  const { id } = useParams();
+  const { t, i18n } = useTranslation();
+
+  console.log('i18n', i18n.changeLanguage());
+
+  //!Function
+  const handleClick = () => {
+    console.log('click');
+    history.push('/cfrs/feedback');
+  };
+
+  //! Render
   return (
     <div>
       <div className="cfrs-container">
-        <Cfrstop title="Phản hồi và ghi nhận" star="345" label="Tạo phản hồi và ghi nhận" />
+        <button
+          onClick={() => {
+            i18n.changeLanguage('en');
+          }}
+        >
+          Change en
+        </button>
+        <button
+          onClick={() => {
+            i18n.changeLanguage('vi');
+          }}
+        >
+          Change vi
+        </button>
+
+        <Cfrstop title={t('cfrs:feedback')} star="345" label={t('cfrs:create-feedback')} handleClick={handleClick} />
 
         <div className="cfrs-bottom">
           {/* Left */}
           <div className="cfrs-bottom-item">
-            <CfrsItemTop title="Bạn nhận được" label="Bảng xếp hạng" />
+            <CfrsItemTop title={t('cfrs:you-receive')} label={t('cfrs:charts')} />
 
             <div className="cfrs-item-achievement">
-              <CfrsAchievement title="Tổng sao nhận được" star="489">
+              <CfrsAchievement title={t('cfrs:total-stars')} star="489">
                 <CommonIcons.Star size={25} />
               </CfrsAchievement>
-              <CfrsAchievement title="Xếp hạng tháng" star="2">
+              <CfrsAchievement title={t('cfrs:month-ranking')} star="2">
                 <CommonIcons.Champion sx={{ fontSize: 25 }} />
               </CfrsAchievement>
-              <CfrsAchievement title="Xếp hạng chu kỳ" star="3">
+              <CfrsAchievement title={t('cfrs:rating')} star="3">
                 <CommonIcons.Alytics size={25} />
               </CfrsAchievement>
             </div>
@@ -60,16 +92,16 @@ const CFRs = () => {
 
           {/* Right */}
           <div className="cfrs-bottom-item">
-            <CfrsItemTop title="Bạn cho đi" label="Bảng xếp hạng" />
+            <CfrsItemTop title={t('cfrs:you-give')} label={t('cfrs:charts')} />
 
             <div className="cfrs-item-achievement">
-              <CfrsAchievement title="Tổng sao đã tặng" star="228">
+              <CfrsAchievement title={t('cfrs:total-stars')} star="228">
                 <CommonIcons.Star size={25} />
               </CfrsAchievement>
-              <CfrsAchievement title="Xếp hạng tháng" star="5">
+              <CfrsAchievement title={t('cfrs:month-ranking')} star="5">
                 <CommonIcons.Champion sx={{ fontSize: 25 }} />
               </CfrsAchievement>
-              <CfrsAchievement title="Xếp hạng chu kỳ" star="8">
+              <CfrsAchievement title={t('cfrs:rating')} star="8">
                 <CommonIcons.Alytics size={25} />
               </CfrsAchievement>
             </div>

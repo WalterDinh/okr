@@ -27,11 +27,6 @@ body {
 }
 
 main {
-  @include tablet-down {
-    padding-right: 12px;
-    padding-left: 12px;
-  }
-
   > [class*='section'] {
     padding: 32px 0;
 
@@ -235,15 +230,14 @@ hr {
 }
 
 .content-container {
-  padding: 32px 32px 24px 24px ;
+  padding: 32px 32px 24px 24px;
+  height: 100%;
 }
 
 .main-container {
-  background-color: #E5E5E5;
   @include desktop {
     padding-left: 240px;
   }
-  @include tablet-down {
-    padding-left: 240px;
-  }
+  background: var(--background-color-grey);
+  min-height: 100vh;
 }
