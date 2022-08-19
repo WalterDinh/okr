@@ -27,5 +27,11 @@ const locale = {
   dashboard: flatten(dashboard, {
     delimiter: '_',
   }),
+  cfrs: flatten(cfrs, {
+    delimiter: '_',
+  }),
+  feedback: flatten(feedback, {
+    delimiter: '_',
+  }),
 };
 export default locale;
