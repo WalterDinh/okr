@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SelectInputHome from 'components/SelectInputHome';
+import SelectInputHome from 'components/CommonStyles/SelectInputHome';
 import CommonIcons from 'components/icons';
 import LineChart from 'components/Chart/LineChart';
 import { useTranslation } from 'react-i18next';
