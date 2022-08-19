@@ -4,12 +4,16 @@
     margin-bottom: 8px;
   }
   .select-input {
-    width: 300px;
+    width: 100%;
     height: 40px;
     border: 1px solid #dbdbdb;
+    border-radius: 4px;
   }
 
   .error-message {
     color: red;
   }
+}
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border: none !important;
 }
