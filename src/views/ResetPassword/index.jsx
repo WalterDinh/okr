@@ -11,7 +11,7 @@ const ResetPasswordPage = () => {
   //! State
 
   //! Function
-  const ForgotPasswordSchema = Yup.object().shape({
+  const ResetPasswordSchema = Yup.object().shape({
     password: Yup.string()
       .matches(passwordRegex, t('messages:wrong-format', { key: t('common:password') }))
       .required(t('messages:required_field', { key: t('common:password') })),
@@ -26,8 +26,8 @@ const ResetPasswordPage = () => {
     <div className="container-auth">
       <div className="form-auth">
         <Formik
-          initialValues={{ email: '' }}
-          validationSchema={ForgotPasswordSchema}
+          initialValues={{ password: '', reEnterPassword: '' }}
+          validationSchema={ResetPasswordSchema}
           onSubmit={(values, actions) => {}}
         >
           <Form>
@@ -43,14 +43,14 @@ const ResetPasswordPage = () => {
               />
             </div>
 
-              <Field
-                name="reEnterPassword"
-                type="password"
-                component={CommonStyles.Input}
-                icon={<CommonIcons.Password />}
-                placeholder={t('messages:reenter-password-placeholder')}
-                label={t('resetpassword:re-enter-new-password')}
-              />
+            <Field
+              name="reEnterPassword"
+              type="password"
+              component={CommonStyles.Input}
+              icon={<CommonIcons.Password />}
+              placeholder={t('messages:reenter-password-placeholder')}
+              label={t('resetpassword:re-enter-new-password')}
+            />
             <CommonStyles.Button
               style={{ width: '100%', height: '56px', marginTop: '32px' }}
               type="primary"
