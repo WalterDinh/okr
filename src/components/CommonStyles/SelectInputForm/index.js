@@ -1,5 +1,5 @@
 import { MenuItem, Select } from '@mui/material';
-import React from 'react';
+import React, { memo } from 'react';
 
 function SelectInputForm(props) {
   const { field, listOption, form, label, placeholder } = props;
@@ -39,4 +39,4 @@ function SelectInputForm(props) {
   );
 }
 
-export default SelectInputForm;
+export default memo(SelectInputForm);

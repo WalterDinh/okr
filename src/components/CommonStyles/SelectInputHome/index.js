@@ -1,6 +1,6 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { red } from '@mui/material/colors';
-import React from 'react';
+import React, { memo } from 'react';
 
 function SelectInputHome(props) {
   const { placeholder, listOption, width, onChangeSelectInput } = props;
@@ -37,4 +37,4 @@ function SelectInputHome(props) {
   );
 }
 
-export default SelectInputHome;
+export default memo(SelectInputHome);

@@ -94,9 +94,6 @@ const Dashboard = (props) => {
             icon={<CommonIcons.Search />}
             placeholder={t('common:search')}
             style={{ width: 300, height: 40, borderRadius: 0 }}
-            onChange={(e) => {
-              console.log(e.target.value);
-            }}
           />
         </div>
       </div>
