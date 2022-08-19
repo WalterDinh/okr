@@ -24,5 +24,8 @@ const locale = {
   resetpassword: flatten(resetpassword, {
     delimiter: '_',
   }),
+  dashboard: flatten(dashboard, {
+    delimiter: '_',
+  }),
 };
 export default locale;
