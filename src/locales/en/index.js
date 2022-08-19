@@ -4,6 +4,7 @@ import forgotpassword from './forgotpassword.json';
 import resetpassword from './resetpassword.json';
 import common from './common.json';
 import messages from './messages.json';
+import dashboard from './dashboard.json';
 import cfrs from './cfrs.json';
 import feedback from './feedback.json';
 
@@ -21,6 +22,9 @@ const locale = {
     delimiter: '_',
   }),
   resetpassword: flatten(resetpassword, {
+    delimiter: '_',
+  }),
+  dashboard: flatten(dashboard, {
     delimiter: '_',
   }),
   cfrs: flatten(cfrs, {

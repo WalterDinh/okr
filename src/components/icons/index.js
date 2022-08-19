@@ -7,13 +7,17 @@ import {
   MdOutlinePersonOutline,
   MdKeyboardBackspace,
 } from 'react-icons/md';
+import { AiFillCaretUp, AiFillCaretDown } from 'react-icons/ai';
 import { AiFillStar, AiOutlineLogout, AiOutlinePlus, AiOutlineDown } from 'react-icons/ai';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { SiSimpleanalytics } from 'react-icons/si';
+import { BsSearch } from 'react-icons/bs';
 
 export default {
   Bell: MdOutlineNotifications,
   Clock: MdAlarm,
+  CaretUp: AiFillCaretUp,
+  CareDown: AiFillCaretDown,
   Mail: MdMailOutline,
   Password: MdLockOutline,
   Setting: MdSettings,
@@ -25,4 +29,5 @@ export default {
   Down: AiOutlineDown,
   Champion: EmojiEventsIcon,
   Alytics: SiSimpleanalytics,
+  Search: BsSearch,
 };
