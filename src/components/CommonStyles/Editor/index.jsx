@@ -8,7 +8,7 @@ const TextEditor = (props) => {
     <div>
       <Editor
         onInit={(evt, editor) => (editorRef.current = editor)}
-        initialValue="<p>This is the initial content of the editor.</p>"
+        initialValue=""
         init={{
           menubar: false,
           width: '100%',

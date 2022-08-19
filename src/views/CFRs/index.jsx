@@ -13,7 +13,9 @@ const CFRs = () => {
   //! State
   const history = useHistory();
   const { id } = useParams();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  console.log('i18n', i18n.changeLanguage());
 
   //!Function
   const handleClick = () => {
@@ -25,6 +27,21 @@ const CFRs = () => {
   return (
     <div>
       <div className="cfrs-container">
+        <button
+          onClick={() => {
+            i18n.changeLanguage('en');
+          }}
+        >
+          Change en
+        </button>
+        <button
+          onClick={() => {
+            i18n.changeLanguage('vi');
+          }}
+        >
+          Change vi
+        </button>
+
         <Cfrstop title={t('cfrs:feedback')} star="345" label={t('cfrs:create-feedback')} handleClick={handleClick} />
 
         <div className="cfrs-bottom">

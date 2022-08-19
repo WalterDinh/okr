@@ -13,7 +13,8 @@
     .feedback-select {
       display: flex;
       justify-content: space-between;
-      @include smart-phone {
+      gap: 20px;
+      @include tablet-down {
         flex-direction: column-reverse;
       }
       .feedback-select-item {
@@ -36,13 +37,13 @@
     .feedback-editor {
       display: flex;
       margin-bottom: 24px;
-      @include smart-phone {
+      @include tablet-down {
         flex-direction: column;
       }
       .feedback-text {
         @include description-black;
         min-width: 200px;
-        @include smart-phone {
+        @include tablet-down {
           margin-bottom: 20px;
         }
       }
@@ -51,7 +52,7 @@
       display: flex;
       .feedback-text {
         min-width: 200px;
-        @include smart-phone {
+        @include tablet-down {
           min-width: 0;
         }
       }
