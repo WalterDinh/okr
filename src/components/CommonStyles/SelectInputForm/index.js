@@ -2,27 +2,22 @@ import { MenuItem, Select } from '@mui/material';
 import React, { memo } from 'react';
 
 function SelectInputForm(props) {
-  const { field, listOption, form, label, placeholder } = props;
-  const { name } = field;
-  const { errors, touched } = form;
-
-  const isErrors = errors[name] && touched[name];
-  const errorMessage = errors[name];
+  const { field, listOption, form, isTouched, errorMsg, label, placeholder, style, ...restProps } = props;
+  const { name } = field || {};
+  const { errors, touched } = form || {};
+  const isErrors = (isTouched && errorMsg) || (errors?.[name] && touched?.[name]);
+  const errorMessage = errorMsg || errors?.[name];
 
   return (
     <div className="select-input-form">
-      <p className="label-input">{label}</p>
-      <div className="select-input">
+      {label && <p className="label-input">{label}</p>}
+      <div className="select-input" style={style}>
         <Select
           displayEmpty
           sx={{ width: '100%', height: '100%', backgroundColor: 'white' }}
-          {...field}
-          renderValue={(selected) => {
-            if (!selected) {
-              return <em>{placeholder}</em>;
-            }
-            return selected;
-          }}
+          {...(field || {})}
+          {...restProps}
+          renderValue={field.value !== '' ? undefined : () => <em>{placeholder}</em>}
         >
           <MenuItem disabled value="">
             <em>{placeholder}</em>
