@@ -13,13 +13,18 @@ import { passwordRegex } from 'constants';
 import * as yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 import { LinearProgress, Box } from '@mui/material';
+import { useState } from 'react';
 // import langServices from 'services/langServices';
 
 const SignupPage = () => {
   //! State
-  const { isLogin, error, isLogging } = GetAuthSelector();
+  const { isLogin } = GetAuthSelector();
   const { t } = useTranslation();
   const { dispatch } = useSagaCreators();
+
+  const [isLogging, setIsLogging] = useState(false);
+  const [error, setError] = useState(null);
+
   const validationSchema = yup.object().shape({
     email: yup
       .string()
@@ -59,12 +64,23 @@ const SignupPage = () => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
+            setIsLogging(true);
+            setError(null);
             if (values.password === values.reEnterPassword) {
               try {
                 dispatch(signupActions.signup, {
                   email: values.email,
                   name: values.name,
                   password: values.password,
+                  callbacks: {
+                    onSuccess: () => {
+                      setIsLogging(false);
+                    },
+                    onFailed: (error) => {
+                      setIsLogging(false);
+                      setError(error);
+                    },
+                  },
                 });
               } catch (error) {}
             } else {
@@ -124,12 +140,12 @@ const SignupPage = () => {
                   innerText={t('common:submit')}
                   borderRadius="round"
                   style={{ width: '100%' }}
-                  disabled={isSubmitting}
+                  disabled={isLogging}
                 />
 
                 <div className="createAcc">
                   <span className="question">{t('messages:already-have-acc')}</span>
-                  <Link to="/sign-up">{t('messages:sign-in')}</Link>
+                  <Link to="/login">{t('messages:sign-in')}</Link>
                 </div>
                 <div className="errorMess">
                   {isLogging && (

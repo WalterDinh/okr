@@ -1,8 +1,6 @@
 import { put, call } from '@redux-saga/core/effects';
-import produce from 'immer';
-import { USER_URL } from 'constants/api';
 import { authActions } from './auth';
-import axios from 'axios';
+import authServices from 'services/authServices';
 
 //! Actions
 export const signupActions = {
@@ -14,22 +12,22 @@ export const signupSaga = {
   [signupActions.signup]: {
     saga: function* ({ payload }) {
       yield put({ type: authActions.loginStart });
-      const { email, name, password } = payload;
+      const { email, name, password, callbacks } = payload;
       try {
-        const getUser = yield call(() => axios.get(USER_URL + `?email=${email}`));
+        const getUser = yield call(authServices.signup, { email });
 
         if (getUser.data.length > 0) {
-          yield put({ type: authActions.loginFailed, payload: 'Email already exists' });
+          callbacks && callbacks.onFailed('Email already exists');
         } else {
           try {
-            yield call(() => axios.post(USER_URL, { email, name, password }));
-            yield put({ type: authActions.loginSuccess, payload: { email, name } });
+            yield call(authServices.saveUserDatabase, { email, name, password });
+            yield put({ type: authActions.loginSuccess, payload: { email, name, password } });
           } catch (error) {
-            yield put({ type: authActions.loginFailed, payload: 'Signup failed' });
+            callbacks && callbacks.onFailed('Signup failed');
           }
         }
       } catch (error) {
-        yield put({ type: authActions.loginFailed, payload: 'Signup failed' });
+        callbacks && callbacks.onFailed('Signup failed');
       }
     },
   },

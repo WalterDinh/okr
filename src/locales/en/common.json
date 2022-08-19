@@ -4,5 +4,8 @@
   "email-label": "Email address",
   "submit": "Submit",
   "name": "Your name",
-  "re-enter-password": "Re-enter password"
+  "re-enter-password": "Re-enter password",
+  "setting": "Setting",
+  "user-profile": "User profile",
+  "logout": "Logout"
 }
