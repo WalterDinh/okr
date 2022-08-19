@@ -5,7 +5,7 @@ import { HiPlus } from 'react-icons/hi';
 
 const Cfrstop = (props) => {
   //! State
-  const { title, star, label } = props;
+  const { title, star, label, handleClick } = props;
 
   //! Function
 
@@ -19,8 +19,14 @@ const Cfrstop = (props) => {
         </span>
       </div>
 
-      <div cfrs-top-right>
-        <CommonStyles.Button type="primary" borderRadius="round" innerText={label} icon={<HiPlus />} />
+      <div>
+        <CommonStyles.Button
+          type="primary"
+          borderRadius="round"
+          innerText={label}
+          icon={<HiPlus />}
+          onClick={handleClick}
+        />
       </div>
     </div>
   );

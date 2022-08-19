@@ -7,4 +7,5 @@ export const RouteBase = {
   CFRs: '/cfrs',
   ForgotPassword: '/forgot-password',
   ResetPassword: '/reset-password',
+  Feedback: '/cfrs/feedback',
 };
