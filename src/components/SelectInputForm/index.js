@@ -2,7 +2,7 @@ import { MenuItem, Select } from '@mui/material';
 import React from 'react';
 
 function SelectInputForm(props) {
-  const { field, listOption, form, label } = props;
+  const { field, listOption, form, label, placeholder } = props;
   const { name } = field;
   const { errors, touched } = form;
 
@@ -19,13 +19,13 @@ function SelectInputForm(props) {
           {...field}
           renderValue={(selected) => {
             if (!selected) {
-              return <em>Lua chon</em>;
+              return <em>{placeholder}</em>;
             }
             return selected;
           }}
         >
           <MenuItem disabled value="">
-            <em>Lua chon</em>
+            <em>{placeholder}</em>
           </MenuItem>
           {listOption.map((item) => (
             <MenuItem key={item.value} value={item.value}>

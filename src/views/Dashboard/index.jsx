@@ -3,7 +3,6 @@ import React from 'react';
 import SelectInputHome from 'components/SelectInputHome';
 import CommonIcons from 'components/icons';
 import LineChart from 'components/Chart/LineChart';
-import InputOutForm from 'components/CommonStyles/InputOutForm';
 import { useTranslation } from 'react-i18next';
 import Input from 'components/CommonStyles/Input';
 import CommonStyles from 'components/CommonStyles';
