@@ -4,26 +4,20 @@ import React, { memo } from 'react';
 
 function SelectInputHome(props) {
   const { placeholder, listOption, width, onChangeSelectInput } = props;
-  const [age, setAge] = React.useState('');
+  const [value, setValue] = React.useState('');
 
   const handleChange = (e) => {
-    setAge(e.target.value);
-    // onChangeSelectInput(e.target.value);
+    setValue(e.target.value);
   };
 
   return (
     <div className="select-input-home">
       <Select
         displayEmpty
-        value={age}
+        value={value}
         sx={{ height: '100%', width: width, borderRadius: 0, backgroundColor: 'white' }}
         onChange={handleChange}
-        renderValue={(selected) => {
-          if (!selected) {
-            return <em>{placeholder}</em>;
-          }
-          return selected;
-        }}
+        renderValue={value !== '' ? undefined : () => <em>{placeholder}</em>}
       >
         <MenuItem disabled value="">
           <em>{placeholder}</em>
