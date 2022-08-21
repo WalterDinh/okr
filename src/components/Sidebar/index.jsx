@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-
-import Dashboard from 'assets/dashboard.png';
-import Checkin from 'assets/checkin.png';
-import Comment from 'assets/b-comment.png';
-import Okrs from 'assets/okrs.png';
-import Report from 'assets/report.png';
-import Quiz from 'assets/quiz.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { RouteBase } from 'constants/routeUrl';
-
-const lists = [
-  { id: 1, title: 'Dashboard', path: RouteBase.Dashboard, src: Dashboard },
-  { id: 2, title: 'Check-in', path: RouteBase.Checkin, src: Checkin },
-  { id: 3, title: 'OKRs', path: '/okrs', src: Okrs },
-  { id: 4, title: 'CFRs', path: '/cfrs', src: Comment },
-  { id: 5, title: 'Report', path: '/report', src: Report },
-  { id: 6, title: 'Quiz', path: '/quiz', src: Quiz },
-];
+import { menuDefault, menuSettings } from 'constants/menuSidebar';
+import { useMemo } from 'react';
 
 const Sidebar = () => {
   //! State
   const [click, setClick] = useState(false);
+  const history = useHistory();
+  const pathname = history.location.pathname;
+
+  const menu = useMemo(() => {
+    if (pathname.includes(RouteBase.Setting)) {
+      return menuSettings;
+    }
+
+    return menuDefault;
+  }, [pathname]);
 
   //! Function
   useEffect(() => {
@@ -47,7 +43,7 @@ const Sidebar = () => {
           </NavLink>
         </div>
         <div className="sidebar-bottom">
-          {lists.map((list) => {
+          {menu?.map((list) => {
             return (
               <NavLink to={list.path} key={list.id}>
                 <div className="sidebar-bottom-item">

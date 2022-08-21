@@ -15,11 +15,8 @@ const CFRs = () => {
   const { id } = useParams();
   const { t, i18n } = useTranslation();
 
-  console.log('i18n', i18n.changeLanguage());
-
   //!Function
   const handleClick = () => {
-    console.log('click');
     history.push('/cfrs/feedback');
   };
 

@@ -9,7 +9,7 @@ const fakeListOption = [
   { value: 2, label: 'Lựa chọn 2' },
 ];
 
-const Feedback = () => {
+const Recognition = () => {
   //! State
   const editorRef = useRef(null);
   const [content, setContent] = useState();
@@ -20,7 +20,6 @@ const Feedback = () => {
   const handleGetContent = () => {
     if (editorRef.current) {
       setContent(editorRef.current.getContent());
-      console.log(editorRef.current.getContent());
     }
   };
 
@@ -39,12 +38,12 @@ const Feedback = () => {
         </div>
 
         <div className="feedback-button">
-          <CommonStyles.Button type="primary" innerText={t('feedback:feedback')} />
           <CommonStyles.Button
             type="secondary-gray"
-            innerText={t('feedback:comfirm')}
-            onClick={() => history.push('/cfrs/recognition')}
+            innerText={t('feedback:feedback')}
+            onClick={() => history.push('/cfrs/feedback')}
           />
+          <CommonStyles.Button type="primary" innerText={t('feedback:comfirm')} />
         </div>
 
         <div className="feedback-bottom">
@@ -77,8 +76,7 @@ const Feedback = () => {
               />
             </div>
             <div className="feedback-tip">
-              <p>{t('feedback:tip1')}</p>
-              <p>{t('feedback:tip2')}</p>
+              <p>{t('feedback:tip3')}</p>
             </div>
           </div>
 
@@ -115,4 +113,4 @@ const Feedback = () => {
   );
 };
 
-export default Feedback;
+export default Recognition;

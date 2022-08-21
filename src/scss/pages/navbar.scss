@@ -249,24 +249,21 @@
   }
 
   .sidebar-bottom {
-    padding: 25px;
+    padding: 25px 0;
     cursor: pointer;
-
+    .active {
+      .sidebar-bottom-item {
+        background: #35435b;
+      }
+    }
     .sidebar-bottom-item {
       display: flex;
       align-items: center;
-      margin-bottom: 30px;
+      // margin-bottom: 30px;
+      padding: 18px;
 
       .sidebar-icon {
         margin-right: 15px;
-      }
-
-      a {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 16px;
-        color: #ffffff;
       }
     }
   }

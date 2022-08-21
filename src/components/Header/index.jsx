@@ -48,7 +48,9 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
     {
       name: t('common:setting'),
       icon: <CommonIcons.Setting size={20} style={{ color: 'rgba(0,0,0,0.5)' }} />,
-      onClick: () => {},
+      onClick: () => {
+        history.push(RouteBase.Setting);
+      },
     },
     {
       name: t('common:user-profile'),
