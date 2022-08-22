@@ -8,12 +8,15 @@ import CommonIcons from 'components/icons';
 import { SIZE_ICON } from 'constants';
 import { RouteBase } from 'constants/routeUrl';
 import { authActions } from 'redux/modules/auth';
+import { GetAuthSelector } from 'redux/selectors';
 
-const Header = ({ onClick, nofication, name, onClickBack }) => {
+const Header = ({ onClick, nofication, onClickBack }) => {
   //! State
   const { t } = useTranslation();
   const history = useHistory();
   const { dispatch } = useSagaCreators();
+  const { user } = GetAuthSelector();
+  const { full_name, img_url } = user;
   const [dropDown, setDropdown] = useState(false);
   const isBack = typeof onClickBack !== 'undefined';
 
@@ -104,9 +107,11 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
             </div>
           </div>
           <div className="user">
-            <div className="avatar"></div>
+            <div className="avatar">
+              <img style={{ borderRadius: '50%', width: '32px' }} src={`http://arilliance.com//${img_url}`} alt="" />
+            </div>
             <Button
-              innerText={name}
+              innerText={full_name}
               onClick={() => {
                 setDropdown(!dropDown);
               }}
