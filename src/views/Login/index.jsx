@@ -113,6 +113,7 @@ const LoginPage = () => {
                   color="primary"
                   innerText={t('common:submit')}
                   borderRadius="round"
+                  disabled={isLogging}
                   style={{ width: '100%' }}
                 />
                 <div className="createAcc">
