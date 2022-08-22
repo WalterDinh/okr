@@ -66,7 +66,6 @@ const UserProfile = () => {
   const handleReset = () => {
     if (formikRef.current && formikRef.current.dirty) {
       const confirm = window.confirm(t('messages:confirm-reset'));
-      console.log(confirm);
       if (confirm) {
         formikRef.current.resetForm({ values: { ...initialValue } });
         setUseravatar(Avatar);
@@ -100,7 +99,6 @@ const UserProfile = () => {
           validationSchema={validationSchema}
           onSubmit={(values, action) => {
             action.resetForm({ values: { ...initialValue } });
-            console.log({ values });
           }}
         >
           {(props) => {
