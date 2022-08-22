@@ -7,9 +7,14 @@ export const RouteBase = {
   ForgotPassword: '/forgot-password',
   ResetPassword: '/reset-password',
 
+  Okrs: '/okrs',
+
   CFRs: '/cfrs',
   Feedback: '/cfrs/feedback',
   Recognition: '/cfrs/recognition',
+
+  Report: '/report',
+  Quiz: '/quiz',
 
   Setting: '/setting',
   EmployeeManager: '/setting/employee-manager',

@@ -83,7 +83,13 @@ const CFRs = () => {
             </div>
 
             <div className="cfrs-item-pagination">
-              <CommonStyles.Pagination />
+              <CommonStyles.PaginationCommon
+                pageText={t('cfrs:page')}
+                count={3}
+                defaultPage={1}
+                siblingCount={0}
+                shape="rounded"
+              />
             </div>
           </div>
 
@@ -128,7 +134,13 @@ const CFRs = () => {
             </div>
 
             <div className="cfrs-item-pagination">
-              <CommonStyles.Pagination />
+              <CommonStyles.PaginationCommon
+                pageText={t('cfrs:page')}
+                count={3}
+                defaultPage={1}
+                siblingCount={0}
+                shape="rounded"
+              />
             </div>
           </div>
         </div>

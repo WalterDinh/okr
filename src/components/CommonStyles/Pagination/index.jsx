@@ -1,21 +1,52 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { Pagination } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const Pagination = (props) => {
+const PaginationCustom = styled(Pagination)(({ theme }) => ({
+  '& .MuiButtonBase-root': {
+    background: '#fff',
+    '&:hover': {
+      background: '#18202E',
+      color: '#fff',
+    },
+  },
+  '& .css-10w330c-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected': {
+    background: '#18202E',
+    color: '#fff',
+    '&:hover': {
+      background: '#18202E',
+      color: '#fff',
+    },
+  },
+}));
+
+const PaginationCommon = (props) => {
   //! State
-  const { t } = useTranslation();
+  const { pageText, count, defaultPage, siblingCount, variant, shape } = props;
 
-  //!Function
+  //! Function
 
   //! Render
   return (
-    <div className="pagination-contianer">
-      <p className="page">{t('cfrs:page')}</p>
-      <button className="pagination-btn">1</button>
-      <button className="pagination-btn">2</button>
-      <button className="pagination-btn">3</button>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px',
+      }}
+    >
+      {pageText && <p className="page">{pageText}</p>}
+      <PaginationCustom
+        count={count}
+        defaultPage={defaultPage}
+        siblingCount={siblingCount}
+        variant={variant}
+        shape={shape}
+        hidePrevButton
+        hideNextButton
+      />
     </div>
   );
 };
 
-export default Pagination;
+export default PaginationCommon;

@@ -45,7 +45,7 @@ const Sidebar = () => {
         <div className="sidebar-bottom">
           {menu?.map((list) => {
             return (
-              <NavLink to={list.path} key={list.id}>
+              <NavLink to={list.path} key={list.id} onClick={() => setClick(!click)}>
                 <div className="sidebar-bottom-item">
                   <span className="sidebar-icon">
                     <img src={list.src} alt="lanscape" />
