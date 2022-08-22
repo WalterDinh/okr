@@ -16,7 +16,7 @@ import { useState } from 'react';
 const LoginPage = () => {
   //! State
   const auth = GetAuthSelector();
-  const { isLogin } = auth;
+  const { isLogin, token } = auth;
   const [isLogging, setIsLogging] = useState(false);
   const [error, setError] = useState(null);
 
@@ -29,10 +29,10 @@ const LoginPage = () => {
       .required(t('messages:required_field', { key: t('common:email') })),
     password: yup
       .string()
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/,
-        t('messages:wrong-format', { key: t('common:password') }),
-      )
+      // .matches(
+      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/,
+      //   t('messages:wrong-format', { key: t('common:password') }),
+      // )
       .required(t('messages:required_field', { key: t('common:password') })),
   });
 
@@ -85,8 +85,8 @@ const LoginPage = () => {
                     name="email"
                     component={CommonStyles.Input}
                     icon={<CommonIcons.Mail />}
-                    placeholder={t('messages:email-placeholder')}
-                    label={t('common:email-label')}
+                    placeholder={t('messages:input-placeholder', { key: t('common:email') })}
+                    label={t('common:email')}
                   />
                 </div>
 
@@ -96,7 +96,7 @@ const LoginPage = () => {
                     type="password"
                     component={CommonStyles.Input}
                     icon={<CommonIcons.Password />}
-                    placeholder={t('messages:password-placeholder')}
+                    placeholder={t('messages:input-placeholder', { key: t('common:password') })}
                     label={t('common:password')}
                   />
                 </div>

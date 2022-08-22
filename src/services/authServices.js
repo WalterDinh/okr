@@ -1,16 +1,16 @@
 import httpServices from './httpServices';
-import { USER_URL } from 'constants/api';
+import { AUTH_URL } from 'constants/api';
 class AuthServices {
   signup({ email } = {}) {
-    return httpServices.get(`${USER_URL}?email=${email}`);
+    return httpServices.get(`${AUTH_URL}?email=${email}`);
   }
 
   saveUserDatabase({ email, name, password } = {}) {
-    return httpServices.post(USER_URL, { email, name, password });
+    return httpServices.post(AUTH_URL, { email, name, password });
   }
 
   login({ email, password } = {}) {
-    return httpServices.get(`${USER_URL}?email=${email}&password=${password}`);
+    return httpServices.post(AUTH_URL, { email, password });
   }
 
   saveUserLocalStorage(data = {}) {
