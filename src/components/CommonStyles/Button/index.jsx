@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Button = ({ onClick, icon, style, type, borderRadius, innerText, disabled }) => {
+const Button = ({ onClick, icon, style, color, type = 'submit', borderRadius, innerText, disabled }) => {
   return (
     <button
       onClick={onClick}
       style={style}
+      type={type}
       disabled={disabled}
-      className={`button-root button-${type} ${borderRadius ? 'button-radius' : ''}`}
+      className={`button-root button-${color} ${borderRadius ? 'button-radius' : ''}`}
     >
       {icon && <div className="button-icon">{icon}</div>}
       <div className="button-text">{innerText}</div>

@@ -110,7 +110,7 @@ const LoginPage = () => {
                 </div>
 
                 <CommonStyles.Button
-                  type="primary"
+                  color="primary"
                   innerText={t('common:submit')}
                   borderRadius="round"
                   disabled={isLogging}
