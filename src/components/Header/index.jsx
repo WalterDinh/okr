@@ -80,7 +80,7 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
               onClick={onClickBack}
               innerText=""
               icon={<CommonIcons.Back />}
-              type="secondary"
+              color="secondary"
               style={buttonStyle['Button-1']}
             ></Button>
           </div>
@@ -88,7 +88,7 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
         <div className="right">
           <div className="addBtn">
             <Button
-              type="primary"
+              color="primary"
               innerText={t('messages:add')}
               onClick={onClick}
               icon={<CommonIcons.Add />}
