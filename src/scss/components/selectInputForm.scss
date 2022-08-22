@@ -1,6 +1,7 @@
 .select-input-form {
   .label-input {
     font-size: 14px;
+    line-height: 16px;
     margin-bottom: 8px;
   }
   .select-input {
@@ -11,9 +12,7 @@
   }
 
   .error-message {
+    margin-top: 8px;
     color: red;
   }
-}
-.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  border: none !important;
 }

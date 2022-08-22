@@ -7,6 +7,7 @@ import messages from './messages.json';
 import dashboard from './dashboard.json';
 import cfrs from './cfrs.json';
 import feedback from './feedback.json';
+import report from './report.json';
 
 const locale = {
   header: flatten(header, {
@@ -31,6 +32,9 @@ const locale = {
     delimiter: '_',
   }),
   feedback: flatten(feedback, {
+    delimiter: '_',
+  }),
+  report: flatten(report, {
     delimiter: '_',
   }),
 };

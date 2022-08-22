@@ -9,6 +9,7 @@ const Checkin = lazy(() => import('views/Checkin'));
 const UserProfile = lazy(() => import('views/UserProfile'));
 const CFRs = lazy(() => import('views/CFRs'));
 const Feedback = lazy(() => import('views/Feedback'));
+const Report = lazy(() => import('views/Report'));
 
 console.log(RouteBase.Feedback);
 
@@ -16,6 +17,7 @@ console.log(RouteBase.Feedback);
 const routes = [
   { path: RouteBase.Checkin, component: withErrorBoundary(Checkin) },
   { path: RouteBase.Dashboard, name: 'Dashboard', component: withErrorBoundary(Dashboard) },
+  { path: RouteBase.Report, name: 'Report', component: withErrorBoundary(Report) },
   { path: RouteBase.CFRs, exact: true, name: 'CFRs', component: withErrorBoundary(CFRs) },
   { path: RouteBase.UserProfile, name: 'UserProfile', component: withErrorBoundary(UserProfile) },
   { path: RouteBase.Feedback, exact: true, name: 'Feedback', component: withErrorBoundary(Feedback) },
