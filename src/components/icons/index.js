@@ -6,6 +6,7 @@ import {
   MdSettings,
   MdOutlinePersonOutline,
   MdKeyboardBackspace,
+  MdCameraAlt,
 } from 'react-icons/md';
 import { AiFillCaretUp, AiFillCaretDown } from 'react-icons/ai';
 import { AiFillStar, AiOutlineLogout, AiOutlinePlus, AiOutlineDown } from 'react-icons/ai';
@@ -30,4 +31,5 @@ export default {
   Champion: EmojiEventsIcon,
   Alytics: SiSimpleanalytics,
   Search: BsSearch,
+  Camera: MdCameraAlt,
 };

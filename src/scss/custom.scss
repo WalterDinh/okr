@@ -241,3 +241,12 @@ hr {
   background: var(--background-color-grey);
   min-height: 100vh;
 }
+
+.MuiOutlinedInput-notchedOutline {
+  border: none !important;
+  outline: none !important;
+}
+
+.Mui-selected {
+  background-color: #e0e0e0 !important;
+}
