@@ -38,7 +38,7 @@ const ForgotPasswordPage = () => {
             />
             <CommonStyles.Button
               style={{ width: '100%', marginTop: '16px' }}
-              type="primary"
+              color="primary"
               borderRadius="round"
               innerText={t('forgotpassword:Next')}
             />
