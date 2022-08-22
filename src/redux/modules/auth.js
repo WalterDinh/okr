@@ -36,7 +36,6 @@ export const authSaga = {
       const { email, password, keepLoggedIn, callbacks } = payload;
       try {
         const { data, ...rest } = yield call(authServices.login, { email, password });
-        console.log('data', data);
         const { token, user } = data;
         if (token) {
           httpServices.attachTokenToHeader(token);
