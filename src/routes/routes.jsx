@@ -9,6 +9,8 @@ const Checkin = lazy(() => import('views/Checkin'));
 const UserProfile = lazy(() => import('views/UserProfile'));
 const CFRs = lazy(() => import('views/CFRs'));
 const Feedback = lazy(() => import('views/Feedback'));
+const OKRs = lazy(() => import('views/OKRs'));
+const CreateNewOKRs = lazy(() => import('views/CreateNewOKRs'));
 const Report = lazy(() => import('views/Report'));
 
 console.log(RouteBase.Feedback);
@@ -22,6 +24,8 @@ const routes = [
   { path: RouteBase.UserProfile, name: 'UserProfile', component: withErrorBoundary(UserProfile) },
   { path: RouteBase.Feedback, exact: true, name: 'Feedback', component: withErrorBoundary(Feedback) },
   { path: RouteBase.Home, exact: true, name: 'Home', component: withErrorBoundary(HomePage) },
+  { path: RouteBase.OKRs, exact: true, name: 'OKRs', component: withErrorBoundary(OKRs) },
+  { path: RouteBase.CreateNewOKRs, exact: true, name: 'CreateNewOKRs', component: withErrorBoundary(CreateNewOKRs) },
   { name: '404', component: withErrorBoundary(Page404) },
 ];
 

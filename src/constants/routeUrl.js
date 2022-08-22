@@ -10,4 +10,6 @@ export const RouteBase = {
   ForgotPassword: '/forgot-password',
   ResetPassword: '/reset-password',
   Feedback: '/cfrs/feedback',
+  OKRs: '/okrs',
+  CreateNewOKRs: '/okrs/create-new-okrs',
 };

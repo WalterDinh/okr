@@ -18,4 +18,6 @@ export default {
   SelectInputForm,
   SelectInputHome,
   TextEditor,
+  SelectInputForm,
+  SelectInputHome,
 };
