@@ -2,6 +2,7 @@ import { put, call } from '@redux-saga/core/effects';
 import produce from 'immer';
 import { isEmpty } from 'lodash';
 import authServices from 'services/authServices';
+import httpServices from 'services/httpServices';
 
 //! Actions
 export const authActions = {
@@ -16,9 +17,10 @@ export const authActions = {
 export const authSaga = {
   [authActions.checkAuth]: {
     saga: function* () {
-      const dataUser = authServices.getUserLocalStorage();
-      if (!isEmpty(dataUser)) {
-        yield put({ type: authActions.loginSuccess });
+      const user = authServices.getUserLocalStorage();
+      if (!isEmpty(user)) {
+        yield put({ type: authActions.loginSuccess, payload: user });
+        httpServices.attachTokenToHeader(user);
       }
     },
   },
@@ -34,10 +36,12 @@ export const authSaga = {
       const { email, password, keepLoggedIn, callbacks } = payload;
       try {
         const { data, ...rest } = yield call(authServices.login, { email, password });
-        const { token } = data;
+        console.log('data', data);
+        const { token, user } = data;
         if (token) {
-          keepLoggedIn && authServices.saveUserLocalStorage(token);
-          yield put({ type: authActions.loginSuccess, payload: token });
+          httpServices.attachTokenToHeader(token);
+          keepLoggedIn && authServices.saveUserLocalStorage(user);
+          yield put({ type: authActions.loginSuccess, payload: user });
           callbacks && callbacks.onSuccess();
         } else {
           callbacks && callbacks.onFailed('Email or password is incorrect');
@@ -54,8 +58,8 @@ export const authReducer = (
   state = {
     auth: {
       isLogin: false,
-      token: null,
     },
+    user: {},
   },
   action,
 ) => {
@@ -63,7 +67,7 @@ export const authReducer = (
     switch (action.type) {
       case authActions.loginSuccess: {
         draftState.auth.isLogin = true;
-        draftState.auth.token = action.payload;
+        draftState.auth.user = action.payload;
         break;
       }
 
