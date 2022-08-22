@@ -16,10 +16,9 @@ import { useState } from 'react';
 const LoginPage = () => {
   //! State
   const auth = GetAuthSelector();
-  const { isLogin, token } = auth;
+  const { isLogin } = auth;
   const [isLogging, setIsLogging] = useState(false);
   const [error, setError] = useState(null);
-
   const { t } = useTranslation();
   const { dispatch } = useSagaCreators();
   const validationSchema = yup.object().shape({
