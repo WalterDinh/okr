@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import CommonStyles from 'components/CommonStyles';
 import SelectInputHome from 'components/CommonStyles/SelectInputHome';
-import BarChart from 'components/Chart/BarChart';
-import PieChart from 'components/Chart/PieChart';
 import CommonReportPage from 'components/CommonReportPage';
 
 const dataBarChart = {
