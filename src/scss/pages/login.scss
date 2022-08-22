@@ -1,6 +1,9 @@
 .login-container {
   display: flex;
   height: 100vh;
+  @include tablet-down {
+    flex-direction: column;
+  }
   .login-form {
     width: 50%;
     display: flex;
@@ -8,15 +11,34 @@
     align-items: center;
     flex-direction: column;
     background-color: #f6f7fa;
+    z-index: 2;
+    @include tablet-down {
+      width: 100%;
+      height: 100vh;
+      background-color: transparent;
+    }
     form {
       max-width: 432px;
       .header {
         font-size: 36px;
         font-weight: bold;
         margin-bottom: 56px;
+        @include tablet-down {
+          color: var(--color-white);
+        }
       }
       .inputField {
         margin-bottom: 24px;
+        .label {
+          @include tablet-down {
+            color: var(--color-white);
+          }
+        }
+        .search-box {
+          @include mobile {
+            width: 100%;
+          }
+        }
       }
       .utilities {
         display: flex;
@@ -24,6 +46,9 @@
         margin-bottom: 36px;
         margin-top: 8px;
         align-items: center;
+        @include tablet-down {
+          color: var(--color-white);
+        }
         .remember {
           display: flex;
           align-items: center;
@@ -33,8 +58,11 @@
         margin-top: 24px;
         display: flex;
         gap: 5px;
+        @include tablet-down {
+          color: var(--color-white);
+        }
         .question {
-          color: #949494;
+          color: #dcdcdc;
         }
       }
       .errorMess {
@@ -56,5 +84,21 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    @include tablet-down {
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+    }
+  }
+  .login-image::after {
+    @include tablet-down {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 }

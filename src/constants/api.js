@@ -1,2 +1,2 @@
 export const GET_TODOS_URL = 'https://jsonplaceholder.typicode.com/todos';
-export const USER_URL = 'https://gamessportal.herokuapp.com/users';
+export const AUTH_URL = 'http://arilliance.com/okr/api/login/';

@@ -53,7 +53,7 @@ const ResetPasswordPage = () => {
             />
             <CommonStyles.Button
               style={{ width: '100%', height: '56px', marginTop: '32px' }}
-              type="primary"
+              color="primary"
               borderRadius="round"
               innerText={t('common:submit')}
             />
