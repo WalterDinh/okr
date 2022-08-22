@@ -34,8 +34,8 @@ const Feedback = () => {
         </div>
 
         <div className="feedback-button">
-          <CommonStyles.Button type="primary" innerText={t('feedback:feedback')} />
-          <CommonStyles.Button type="secondary-gray" innerText={t('feedback:comfirm')} />
+          <CommonStyles.Button color="primary" innerText={t('feedback:feedback')} />
+          <CommonStyles.Button color="secondary-gray" innerText={t('feedback:comfirm')} />
         </div>
 
         <div className="feedback-bottom">
@@ -88,14 +88,14 @@ const Feedback = () => {
           <div className="feedback-editor-btn">
             <p className="feedback-text"></p>
             <CommonStyles.Button
-              type="secondary-gray"
+              color="secondary-gray"
               borderRadius="round"
               innerText={t('feedback:cancel')}
               onClick={handleClearContent}
               style={{ marginRight: '20px' }}
             />
             <CommonStyles.Button
-              type="primary"
+              color="primary"
               borderRadius="round"
               innerText={t('feedback:save')}
               onClick={handleGetContent}

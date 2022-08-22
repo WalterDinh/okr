@@ -6,6 +6,7 @@ const HomePage = lazy(() => import('views/Home'));
 const Dashboard = lazy(() => import('views/Dashboard'));
 const Page404 = lazy(() => import('views/Page404'));
 const Checkin = lazy(() => import('views/Checkin'));
+const UserProfile = lazy(() => import('views/UserProfile'));
 const CFRs = lazy(() => import('views/CFRs'));
 const Feedback = lazy(() => import('views/Feedback'));
 const Report = lazy(() => import('views/Report'));
@@ -18,6 +19,7 @@ const routes = [
   { path: RouteBase.Dashboard, name: 'Dashboard', component: withErrorBoundary(Dashboard) },
   { path: RouteBase.Report, name: 'Report', component: withErrorBoundary(Report) },
   { path: RouteBase.CFRs, exact: true, name: 'CFRs', component: withErrorBoundary(CFRs) },
+  { path: RouteBase.UserProfile, name: 'UserProfile', component: withErrorBoundary(UserProfile) },
   { path: RouteBase.Feedback, exact: true, name: 'Feedback', component: withErrorBoundary(Feedback) },
   { path: RouteBase.Home, exact: true, name: 'Home', component: withErrorBoundary(HomePage) },
   { name: '404', component: withErrorBoundary(Page404) },

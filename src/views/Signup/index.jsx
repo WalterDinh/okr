@@ -136,7 +136,7 @@ const SignupPage = () => {
                 </div>
 
                 <CommonStyles.Button
-                  type="primary"
+                  color="primary"
                   innerText={t('common:submit')}
                   borderRadius="round"
                   style={{ width: '100%' }}
