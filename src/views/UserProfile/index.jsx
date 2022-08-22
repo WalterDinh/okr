@@ -71,6 +71,12 @@ const UserProfile = () => {
         setUseravatar(Avatar);
       }
     }
+    if (userAvatar !== Avatar) {
+      const confirm = window.confirm(t('messages:confirm-reset'));
+      if (confirm) {
+        setUseravatar(Avatar);
+      }
+    }
   };
 
   //! Render
