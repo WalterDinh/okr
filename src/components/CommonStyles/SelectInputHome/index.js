@@ -14,7 +14,7 @@ function SelectInputHome(props) {
       <Select
         displayEmpty
         value={value}
-        sx={{ height: '100%', width: width, borderRadius: 0, backgroundColor: 'white' }}
+        sx={{ height: '100%', width: width, borderRadius: 0, backgroundColor: 'white', border: '1px solid #DBDBDB' }}
         onChange={handleChange}
         renderValue={value !== '' ? undefined : () => <em>{placeholder}</em>}
       >
