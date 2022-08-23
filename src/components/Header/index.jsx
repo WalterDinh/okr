@@ -9,6 +9,7 @@ import { SIZE_ICON } from 'constants';
 import { RouteBase } from 'constants/routeUrl';
 import { authActions } from 'redux/modules/auth';
 import { GetUserSelector } from 'redux/selectors';
+import { BASE_URL } from 'constants/api';
 
 const Header = ({ onClick, nofication, onClickBack }) => {
   //! State
@@ -123,7 +124,7 @@ const Header = ({ onClick, nofication, onClickBack }) => {
           </div>
           <div className="user" ref={btnRef}>
             <div className="avatar">
-              <img style={{ borderRadius: '50%', width: '32px' }} src={`http://arilliance.com//${img_url}`} alt="" />
+              <img style={{ borderRadius: '50%', width: '32px' }} src={`${BASE_URL}/${img_url}`} alt="" />
             </div>
             <Button
               onClick={() => {

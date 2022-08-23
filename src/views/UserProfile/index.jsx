@@ -15,6 +15,7 @@ import useGetListCompany from 'hooks/company/useGetListCompany';
 import useSagaCreators from 'hooks/useSagaCreators';
 import { userProfileActions } from 'redux/modules/userprofile';
 import { Box, LinearProgress } from '@mui/material';
+import { BASE_URL } from 'constants/api';
 
 const styles = {
   inputForm: {
@@ -166,7 +167,7 @@ const UserProfile = () => {
       <div className="userTitle">{t('common:user-profile')}</div>
       <div className="userContainer">
         <div className="userInfo">
-          <div className="userAvatar" style={{ backgroundImage: `url(http://arilliance.com//${userAvatar})` }}>
+          <div className="userAvatar" style={{ backgroundImage: `url(${BASE_URL}/${userAvatar})` }}>
             <div className="inputAva">
               <IconButton color="primary" aria-label="upload picture" component="label">
                 <input hidden accept="image/*" type="file" onChange={(e) => handleChangeAvatar(e)} />
