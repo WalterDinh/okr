@@ -22,6 +22,7 @@ const Cfrstop = (props) => {
       <div>
         <CommonStyles.Button
           color="primary"
+          style={{ padding: '0 12px' }}
           borderRadius="round"
           innerText={label}
           icon={<HiPlus />}

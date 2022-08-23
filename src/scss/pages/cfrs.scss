@@ -27,6 +27,12 @@
         }
       }
     }
+    button {
+      @include description-light-b;
+      &:hover {
+        color: var(--color-black);
+      }
+    }
   }
 
   .cfrs-bottom {
