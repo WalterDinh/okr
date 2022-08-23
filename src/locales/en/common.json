@@ -2,6 +2,7 @@
   "email": "Email",
   "password": "Password",
   "submit": "Submit",
+  "cancel": "Cancel",
   "name": "Your name",
   "re-enter-password": "Re-enter password",
   "search":"Search",

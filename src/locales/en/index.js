@@ -7,6 +7,7 @@ import messages from './messages.json';
 import dashboard from './dashboard.json';
 import cfrs from './cfrs.json';
 import feedback from './feedback.json';
+import newokr from './newokr.json';
 import report from './report.json';
 import setting from './setting.json';
 
@@ -33,6 +34,9 @@ const locale = {
     delimiter: '_',
   }),
   feedback: flatten(feedback, {
+    delimiter: '_',
+  }),
+  newokr: flatten(newokr, {
     delimiter: '_',
   }),
   report: flatten(report, {

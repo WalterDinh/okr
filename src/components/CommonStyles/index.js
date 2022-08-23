@@ -4,7 +4,7 @@ import Input from './Input';
 import Loading from './Loading';
 import PaginationCommon from './Pagination';
 import TextEditor from './Editor';
-
+import SelectField from './Select';
 import SelectInputHome from './SelectInputHome';
 import SelectInputForm from './SelectInputForm';
 import ConfirmDialog from './ConfirmDialog';
@@ -16,6 +16,7 @@ export default {
   Container,
   Loading,
   PaginationCommon,
+  SelectField,
   SelectInputForm,
   SelectInputHome,
   TextEditor,

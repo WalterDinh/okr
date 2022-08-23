@@ -14,6 +14,8 @@ const Recognition = lazy(() => import('views/Recognition'));
 const Setting = lazy(() => import('views/Setting'));
 const EmployeeManager = lazy(() => import('views/EmployeeManager'));
 
+const OKRs = lazy(() => import('views/OKRs'));
+const CreateNewOKRs = lazy(() => import('views/CreateNewOKRs'));
 const Report = lazy(() => import('views/Report'));
 
 console.log(RouteBase.Feedback);
@@ -38,6 +40,8 @@ const routes = [
     component: withErrorBoundary(EmployeeManager),
   },
 
+  { path: RouteBase.OKRs, exact: true, name: 'OKRs', component: withErrorBoundary(OKRs) },
+  { path: RouteBase.CreateNewOKRs, exact: true, name: 'CreateNewOKRs', component: withErrorBoundary(CreateNewOKRs) },
   { name: '404', component: withErrorBoundary(Page404) },
 ];
 
