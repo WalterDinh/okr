@@ -1,0 +1,41 @@
+.employeeManager-container {
+  padding: 24px;
+  .employeeManager-top {
+    @include d-flex-sb;
+    margin-bottom: 24px;
+    .left {
+      .employeeManager-title {
+        @include heading-secondary;
+      }
+    }
+    .right {
+      @include d-flex;
+      gap: 24px;
+    }
+  }
+  .employeeManager-table {
+    margin-bottom: 24px;
+    thead {
+      th {
+        padding: '20px';
+        @include description-black;
+        opacity: 0.5;
+      }
+    }
+    tbody {
+      th,
+      td {
+        @include description-black;
+      }
+    }
+  }
+  .employeeManager-pagination {
+    nav {
+      width: 100%;
+      ul {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

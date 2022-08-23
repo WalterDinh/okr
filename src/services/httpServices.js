@@ -11,7 +11,7 @@ class Services {
     this.interceptors = this.axios.interceptors.request.use(
       function (config) {
         // Do something before request is sent
-        config.headers.sessionId = token;
+        config.headers.Authorization = `token ${token}`;
         return config;
       },
       function (error) {

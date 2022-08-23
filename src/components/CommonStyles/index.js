@@ -2,22 +2,24 @@ import Button from './Button';
 import Container from './Container';
 import Input from './Input';
 import Loading from './Loading';
-import Pagination from './Pagination';
-import SelectField from './Select';
+import PaginationCommon from './Pagination';
 import TextEditor from './Editor';
-import SelectInputForm from './SelectInputForm';
+import SelectField from './Select';
 import SelectInputHome from './SelectInputHome';
+import SelectInputForm from './SelectInputForm';
+import ConfirmDialog from './ConfirmDialog';
+import PopupForm from './PopupForm';
 
 export default {
   Input,
   Button,
   Container,
   Loading,
-  Pagination,
+  PaginationCommon,
   SelectField,
   SelectInputForm,
   SelectInputHome,
   TextEditor,
-  SelectInputForm,
-  SelectInputHome,
+  ConfirmDialog,
+  PopupForm,
 };
