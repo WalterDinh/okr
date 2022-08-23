@@ -4,6 +4,11 @@ import SelectChoice from './SelectChoice';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+const fakeListOption = [
+  { value: 1, label: 'Lựa chọn 1' },
+  { value: 2, label: 'Lựa chọn 2' },
+];
+
 const Feedback = () => {
   //! State
   const editorRef = useRef(null);
@@ -35,7 +40,14 @@ const Feedback = () => {
 
         <div className="feedback-button">
           <CommonStyles.Button color="primary" innerText={t('feedback:feedback')} />
-          <CommonStyles.Button color="secondary-gray" innerText={t('feedback:comfirm')} />
+          <CommonStyles.Button
+            color="secondary-gray"
+            innerText={t('feedback:comfirm')}
+            onClick={() => history.push('/cfrs/recognition')}
+          />
+
+          {/* <CommonStyles.Button color="primary" innerText={t('feedback:feedback')} />
+          <CommonStyles.Button color="secondary-gray" innerText={t('feedback:comfirm')} /> */}
         </div>
 
         <div className="feedback-bottom">
@@ -43,33 +55,28 @@ const Feedback = () => {
             <div>
               <SelectChoice
                 text={t('feedback:feedback-type')}
+                listOption={fakeListOption}
                 label={t('feedback:option')}
-                size="small"
-                sx={{ minWidth: 250 }}
+                width="300px"
               />
               <SelectChoice
                 text={t('feedback:responders')}
                 label={t('feedback:option')}
-                size="small"
-                sx={{ minWidth: 250 }}
+                listOption={fakeListOption}
+                width="300px"
               />
               <SelectChoice
                 text={t('feedback:cycle')}
                 label={t('feedback:option')}
-                size="small"
-                sx={{ minWidth: 250 }}
+                listOption={fakeListOption}
+                width="300px"
               />
-              <SelectChoice
-                text={t('feedback:okrs')}
-                label={t('feedback:option')}
-                size="small"
-                sx={{ minWidth: 250 }}
-              />
+              <SelectChoice text={t('feedback:okrs')} label={t('feedback:option')} width="300px" />
               <SelectChoice
                 text={t('feedback:criterion')}
                 label={t('feedback:option')}
-                size="small"
-                sx={{ minWidth: 250 }}
+                listOption={fakeListOption}
+                width="300px"
               />
             </div>
             <div className="feedback-tip">

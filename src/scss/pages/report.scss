@@ -1,0 +1,46 @@
+.report-page {
+  .report-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 50px;
+    gap: 29px;
+    .title {
+      font-size: 1.7rem;
+    }
+    .title-btn {
+      display: flex;
+    }
+  }
+  .statistical {
+    width: 100%;
+    min-height: 588px;
+    padding: 32px;
+    background-color: white;
+    .statistical-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 32px;
+      .title {
+        font-size: 1.7rem;
+      }
+      .filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+    }
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 33px;
+      margin-top: 32px;
+    }
+  }
+  .discipline-title {
+    font-size: 1.7rem;
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+}

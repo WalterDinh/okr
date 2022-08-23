@@ -17,7 +17,7 @@ function SelectInputForm(props) {
           value={field.value || ''}
           {...(field || {})}
           {...restProps}
-          renderValue={field.value !== '' ? undefined : () => <em>{placeholder}</em>}
+          renderValue={field.value !== '' ? undefined : () => <em style={{ opacity: '70%' }}>{placeholder}</em>}
         >
           <MenuItem disabled value="">
             <em>{placeholder}</em>

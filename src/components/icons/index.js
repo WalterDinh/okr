@@ -13,6 +13,9 @@ import { AiFillStar, AiOutlineLogout, AiOutlinePlus, AiOutlineDown } from 'react
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { SiSimpleanalytics } from 'react-icons/si';
 import { BsSearch } from 'react-icons/bs';
+import {GrClose} from 'react-icons/gr';
+import {GrAddCircle} from 'react-icons/gr';
+
 
 export default {
   Bell: MdOutlineNotifications,
@@ -32,4 +35,6 @@ export default {
   Alytics: SiSimpleanalytics,
   Search: BsSearch,
   Camera: MdCameraAlt,
+  Close: GrClose,
+  AddCircle: GrAddCircle,
 };
