@@ -3,7 +3,6 @@ import React, { memo } from 'react';
 
 function SelectInputForm(props) {
   const { field, listOption, form, isTouched, errorMsg, label, placeholder, style, ...restProps } = props;
-  // console.log('props:', props);
   const { name } = field || {};
   const { errors, touched } = form || {};
   const isErrors = (isTouched && errorMsg) || (errors?.[name] && touched?.[name]);

@@ -132,7 +132,6 @@ const UserProfile = () => {
   };
 
   const handleSubmit = (values) => {
-    console.log('submit values:', values);
     setIsLoading(true);
     dispatch(userProfileActions.updateUser, {
       id: id,
@@ -155,7 +154,6 @@ const UserProfile = () => {
         },
         onFailed: (error) => {
           setError(error);
-          console.log(error);
           setIsLoading(false);
         },
       },

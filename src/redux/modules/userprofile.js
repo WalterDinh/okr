@@ -19,7 +19,6 @@ export const userProfileSaga = {
         yield call(userprofileServices.patchUser, { id, data });
         callbacks.onSuccess();
       } catch (error) {
-        console.log(error);
         callbacks.onFailed('patch error:', error);
       }
     },
@@ -42,9 +41,7 @@ export const userProfileSaga = {
       try {
         const res = yield call(userprofileServices.updateUserAvatar, { formData });
         callbacks.onSuccess(res.data.file);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     },
   },
 };
@@ -59,7 +56,6 @@ export const userReducer = (
   return produce(state, (draftState) => {
     switch (action.type) {
       case userProfileActions.setUser: {
-        console.log('setData');
         draftState.user = action.payload;
         break;
       }
