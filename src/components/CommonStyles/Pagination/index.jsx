@@ -10,13 +10,9 @@ const PaginationCustom = styled(Pagination)(({ theme }) => ({
       color: '#fff',
     },
   },
-  '& .css-10w330c-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected': {
-    background: '#18202E',
+  '& .Mui-selected': {
+    background: '#18202E !important',
     color: '#fff',
-    '&:hover': {
-      background: '#18202E',
-      color: '#fff',
-    },
   },
 }));
 

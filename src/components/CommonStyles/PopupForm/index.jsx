@@ -22,7 +22,7 @@ const PopupForm = (props) => {
             <Typography variant="h6" component="div">
               Employee Form
             </Typography>
-            <CommonStyles.Button type="icon" borderRadius="round" icon={<Close />} onClick={handleClose} />
+            <CommonStyles.Button color="icon" borderRadius="round" icon={<Close />} onClick={handleClose} />
           </div>
         </DialogTitle>
         <hr />

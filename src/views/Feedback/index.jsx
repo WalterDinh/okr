@@ -39,15 +39,15 @@ const Feedback = () => {
         </div>
 
         <div className="feedback-button">
-          <CommonStyles.Button type="primary" innerText={t('feedback:feedback')} />
+          <CommonStyles.Button color="primary" innerText={t('feedback:feedback')} />
           <CommonStyles.Button
-            type="secondary-gray"
+            color="secondary-gray"
             innerText={t('feedback:comfirm')}
             onClick={() => history.push('/cfrs/recognition')}
           />
 
-          <CommonStyles.Button color="primary" innerText={t('feedback:feedback')} />
-          <CommonStyles.Button color="secondary-gray" innerText={t('feedback:comfirm')} />
+          {/* <CommonStyles.Button color="primary" innerText={t('feedback:feedback')} />
+          <CommonStyles.Button color="secondary-gray" innerText={t('feedback:comfirm')} /> */}
         </div>
 
         <div className="feedback-bottom">

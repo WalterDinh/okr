@@ -23,7 +23,7 @@ const EmployeeTitle = (props) => {
         />
         <CommonStyles.Button
           style={{ height: '40px', width: '132px' }}
-          type="primary"
+          color="primary"
           borderRadius="round"
           innerText={innerText}
           icon={<HiPlus />}

@@ -34,9 +34,9 @@ function ConfirmDialog(props) {
           </DialogContentText>
         </DialogContent>
         <DialogActions sx={{ justifyContent: 'center' }}>
-          <CommonStyles.Button type="primary" borderRadius="round" innerText="No" onClick={handleClose} />
+          <CommonStyles.Button color="primary" borderRadius="round" innerText="No" onClick={handleClose} />
           <CommonStyles.Button
-            type="primary"
+            color="primary"
             borderRadius="round"
             innerText="Yes"
             // onClick={}

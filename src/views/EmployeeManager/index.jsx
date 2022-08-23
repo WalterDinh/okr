@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useTranslation } from 'react-i18next';
 import CommonStyles from 'components/CommonStyles';
 import EmployeeTitle from '../../components/EmployeeTitle';
 import EmployeeTable from './components/EmployeeTable';
@@ -7,6 +7,7 @@ import EmployeeForm from './components/EmployeeForm';
 
 const EmployeeManager = () => {
   //! State
+  const { t } = useTranslation();
   const [openPopup, setOpenPopup] = React.useState(false);
   const [confirmDialog, setConfirmDialof] = React.useState({
     isOpen: false,
@@ -27,9 +28,9 @@ const EmployeeManager = () => {
   return (
     <div className="employeeManager-container">
       <EmployeeTitle
-        title="Quản lý nhân viên"
-        placeholder="Tìm kiếm"
-        innerText="Thêm mới"
+        title={t('setting:employee-manager')}
+        placeholder={t('setting:search')}
+        innerText={t('setting:add-new')}
         handleClickOpen={handleClickOpen}
       />
 

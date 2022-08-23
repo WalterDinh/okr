@@ -10,18 +10,17 @@ import CommonStyles from 'components/CommonStyles';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
-const columns = [{ id: 1, name: '' }];
+import { useTranslation } from 'react-i18next';
 
 const dataUser = [
   {
     id: 1,
-    name: 'Đoàn Tuấn Anh',
-    email: 'doantuananh@gmail.com',
+    name: 'Nguyễn Thành Luân',
+    email: 'thanhluan@gmail.com',
     phone: '0912345678',
-    department: 'Marketing',
+    department: 'Sale',
     jobPosition: 'Nhân viên',
-    time: '28 / 08 / 2021',
+    time: '28/03/2021',
     permission: 'Nhân viên',
     buttonCheck: <CommonStyles.Button type="icon" borderRadius="round" icon={<CheckCircleOutlineIcon />} />,
     buttonEdit: <CommonStyles.Button type="icon" borderRadius="round" icon={<EditIcon />} />,
@@ -34,7 +33,20 @@ const dataUser = [
     phone: '0912345678',
     department: 'Marketing',
     jobPosition: 'Nhân viên',
-    time: '28 / 08 / 2021',
+    time: '28/08/2021',
+    permission: 'Nhân viên',
+    buttonCheck: <CommonStyles.Button type="icon" borderRadius="round" icon={<CheckCircleOutlineIcon />} />,
+    buttonEdit: <CommonStyles.Button type="icon" borderRadius="round" icon={<EditIcon />} />,
+    buttonDelete: <CommonStyles.Button type="icon" borderRadius="round" icon={<DeleteIcon />} />,
+  },
+  {
+    id: 3,
+    name: 'Phạm Ngoc Anh',
+    email: 'phamnganh@gmail.com',
+    phone: '0912345678',
+    department: 'Dev',
+    jobPosition: 'Nhân viên',
+    time: '28/08/2021',
     permission: 'Nhân viên',
     buttonCheck: <CommonStyles.Button type="icon" borderRadius="round" icon={<CheckCircleOutlineIcon />} />,
     buttonEdit: <CommonStyles.Button type="icon" borderRadius="round" icon={<EditIcon />} />,
@@ -44,6 +56,7 @@ const dataUser = [
 
 const EmployeeTable = (props) => {
   //! State
+  const { t } = useTranslation();
   const { confirmDialog, setConfirmDialof } = props;
 
   //! Function
@@ -55,16 +68,16 @@ const EmployeeTable = (props) => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">HỌ VÀ TÊN </TableCell>
-              <TableCell align="left">EMAIL ĐĂNG NHẬP </TableCell>
-              <TableCell align="left">SỐ ĐIỆN THOẠI </TableCell>
-              <TableCell align="left">PHÒNG BAN </TableCell>
-              <TableCell align="left">VỊ TRÍ CÔNG VIỆC </TableCell>
-              <TableCell align="left">NGÀY TẠO </TableCell>
-              <TableCell align="left">QUYỀN </TableCell>
-              <TableCell align="center">KÍCH HOẠT </TableCell>
-              <TableCell align="center">PROFILE </TableCell>
-              <TableCell align="center">HÀNH ĐỘNG</TableCell>
+              <TableCell align="left">{t('setting:first-last-name')}</TableCell>
+              <TableCell align="left">{t('setting:email-login')}</TableCell>
+              <TableCell align="left">{t('setting:phone')}</TableCell>
+              <TableCell align="left">{t('setting:department')}</TableCell>
+              <TableCell align="left">{t('setting:job-position')}</TableCell>
+              <TableCell align="left">{t('setting:time')}</TableCell>
+              <TableCell align="left">{t('setting:permission')}</TableCell>
+              <TableCell align="left">{t('setting:activated')}</TableCell>
+              <TableCell align="center">{t('setting:profile')}</TableCell>
+              <TableCell align="center">{t('setting:action')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -80,15 +93,15 @@ const EmployeeTable = (props) => {
                 <TableCell align="left">{row.time}</TableCell>
                 <TableCell align="left">{row.permission}</TableCell>
                 <TableCell align="center">
-                  <CommonStyles.Button type="icon" borderRadius="round" icon={<CheckCircleOutlineIcon />} />
+                  <CommonStyles.Button color="icon" borderRadius="round" icon={<CheckCircleOutlineIcon />} />
                 </TableCell>
                 <TableCell align="center">
-                  <CommonStyles.Button type="icon" borderRadius="round" icon={<CheckCircleOutlineIcon />} />
+                  <CommonStyles.Button color="icon" borderRadius="round" icon={<CheckCircleOutlineIcon />} />
                 </TableCell>
-                <TableCell align="center">
-                  <CommonStyles.Button type="icon" borderRadius="round" icon={<EditIcon />} />
+                <TableCell align="center" sx={{ display: 'flex', gap: '5px' }}>
+                  <CommonStyles.Button color="icon" borderRadius="round" icon={<EditIcon />} />
                   <CommonStyles.Button
-                    type="icon"
+                    color="icon"
                     borderRadius="round"
                     icon={<DeleteIcon />}
                     onClick={() => {
