@@ -3,11 +3,11 @@ import React, { memo } from 'react';
 
 function SelectInputForm(props) {
   const { field, listOption, form, isTouched, errorMsg, label, placeholder, style, ...restProps } = props;
+  // console.log('props:', props);
   const { name } = field || {};
   const { errors, touched } = form || {};
   const isErrors = (isTouched && errorMsg) || (errors?.[name] && touched?.[name]);
   const errorMessage = errorMsg || errors?.[name];
-
   return (
     <div className="select-input-form">
       {label && <p className="label-input">{label}</p>}
@@ -15,6 +15,7 @@ function SelectInputForm(props) {
         <Select
           displayEmpty
           sx={{ width: '100%', height: '100%', backgroundColor: 'white' }}
+          value={field.value || ''}
           {...(field || {})}
           {...restProps}
           renderValue={field.value !== '' ? undefined : () => <em>{placeholder}</em>}
