@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useHistory } from 'react-router-dom';
 import CommonStyles from 'components/CommonStyles';
 import CommonIcons from '../../components/icons';
 import { passwordRegex } from 'constants';
@@ -8,6 +9,8 @@ import * as Yup from 'yup';
 
 const ResetPasswordPage = () => {
   const { t } = useTranslation();
+  const history = useHistory();
+
   //! State
 
   //! Function
@@ -28,7 +31,13 @@ const ResetPasswordPage = () => {
         <Formik
           initialValues={{ password: '', reEnterPassword: '' }}
           validationSchema={ResetPasswordSchema}
-          onSubmit={(values, actions) => {}}
+          onSubmit={(values, actions) => {
+            if(values.password === values.reEnterPassword) {
+            history.push('/login');
+          } else {
+            alert('Password not match');
+          }
+          }}
         >
           <Form>
             <h1 className="headingreset">{t('resetpassword:NewPassword')}</h1>
