@@ -3,6 +3,7 @@ import produce from 'immer';
 import { isEmpty } from 'lodash';
 import authServices from 'services/authServices';
 import httpServices from 'services/httpServices';
+import { userProfileActions } from './userprofile';
 
 //! Actions
 export const authActions = {
@@ -17,10 +18,11 @@ export const authActions = {
 export const authSaga = {
   [authActions.checkAuth]: {
     saga: function* () {
-      const user = authServices.getUserLocalStorage();
+      const { user, token } = authServices.getUserLocalStorage();
       if (!isEmpty(user)) {
-        yield put({ type: authActions.loginSuccess, payload: user });
-        httpServices.attachTokenToHeader(user);
+        yield put({ type: userProfileActions.setUser, payload: user });
+        yield put({ type: authActions.loginSuccess });
+        httpServices.attachTokenToHeader(token);
       }
     },
   },
@@ -36,12 +38,12 @@ export const authSaga = {
       const { email, password, keepLoggedIn, callbacks } = payload;
       try {
         const { data, ...rest } = yield call(authServices.login, { email, password });
-        console.log('data', data);
         const { token, user } = data;
         if (token) {
           httpServices.attachTokenToHeader(token);
-          keepLoggedIn && authServices.saveUserLocalStorage(user);
-          yield put({ type: authActions.loginSuccess, payload: user });
+          keepLoggedIn && authServices.saveUserLocalStorage({ user, token });
+          yield put({ type: authActions.loginSuccess });
+          yield put({ type: userProfileActions.setUser, payload: user });
           callbacks && callbacks.onSuccess();
         } else {
           callbacks && callbacks.onFailed('Email or password is incorrect');
@@ -59,7 +61,6 @@ export const authReducer = (
     auth: {
       isLogin: false,
     },
-    user: {},
   },
   action,
 ) => {
@@ -67,13 +68,11 @@ export const authReducer = (
     switch (action.type) {
       case authActions.loginSuccess: {
         draftState.auth.isLogin = true;
-        draftState.auth.user = action.payload;
         break;
       }
 
       case authActions.logoutSuccess: {
         draftState.auth.isLogin = false;
-        draftState.auth.token = null;
         break;
       }
 

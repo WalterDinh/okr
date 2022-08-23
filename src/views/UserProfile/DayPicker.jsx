@@ -18,16 +18,6 @@ const DayPicker = (prop) => {
     ...fieldStyle,
   };
 
-  const handleOpen = () => {
-    const calendar = document.getElementsByClassName('MuiCalendarPicker-root');
-    if (calendar[0]) calendar[0].style.background = 'red';
-    const calendarDay = document.getElementsByClassName('MuiPickersDay-root');
-    for (const day of calendarDay) {
-      day.addEventListener('click', () => {
-        calendar[0].style.background = 'red';
-      });
-    }
-  };
   return (
     <Fragment>
       <div className="dayPickerLabel" style={{ marginBottom: '8px' }}>
@@ -38,7 +28,6 @@ const DayPicker = (prop) => {
           value={value}
           onChange={onChange}
           maxDate={new Date()}
-          onOpen={handleOpen}
           renderInput={(params) => <TextField {...params} style={textFieldStyle} />}
         />
       </LocalizationProvider>
