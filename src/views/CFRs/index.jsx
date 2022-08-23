@@ -15,11 +15,8 @@ const CFRs = () => {
   const { id } = useParams();
   const { t, i18n } = useTranslation();
 
-  console.log('i18n', i18n.changeLanguage());
-
   //!Function
   const handleClick = () => {
-    console.log('click');
     history.push('/cfrs/feedback');
   };
 
@@ -86,7 +83,13 @@ const CFRs = () => {
             </div>
 
             <div className="cfrs-item-pagination">
-              <CommonStyles.Pagination />
+              <CommonStyles.PaginationCommon
+                pageText={t('cfrs:page')}
+                count={3}
+                defaultPage={1}
+                siblingCount={0}
+                shape="rounded"
+              />
             </div>
           </div>
 
@@ -131,7 +134,13 @@ const CFRs = () => {
             </div>
 
             <div className="cfrs-item-pagination">
-              <CommonStyles.Pagination />
+              <CommonStyles.PaginationCommon
+                pageText={t('cfrs:page')}
+                count={3}
+                defaultPage={1}
+                siblingCount={0}
+                shape="rounded"
+              />
             </div>
           </div>
         </div>

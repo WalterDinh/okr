@@ -1,0 +1,15 @@
+{
+  "employee-manager": "Employee manager",
+  "search": "SEARCH",
+  "add-new": "Add New",
+  "first-last-name": "FIRST AND LAST NAME",
+  "email-login": "EMAIL LOGIN",
+  "phone": "PHONE",
+  "department": "DEPARTMENT",
+  "job-position": "JOB POSITION",
+  "time": "DATE CREATED",
+  "permission": "PERMISSION",
+  "activated": "ACTIVATED",
+  "profile": "PROFILE",
+  "action": "ACTION"
+}

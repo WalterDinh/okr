@@ -9,6 +9,7 @@ function SelectInputHome(props) {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
   return (
     <div className="select-input-home">
       <Select
@@ -21,7 +22,7 @@ function SelectInputHome(props) {
         <MenuItem disabled value="">
           <em>{placeholder}</em>
         </MenuItem>
-        {listOption.map((item) => (
+        {listOption?.map((item) => (
           <MenuItem key={item.value} value={item.value}>
             {item.label}
           </MenuItem>

@@ -1,13 +1,13 @@
 import { put, call } from '@redux-saga/core/effects';
 import produce from 'immer';
+import { isEmpty } from 'lodash';
 import authServices from 'services/authServices';
+import httpServices from 'services/httpServices';
 
 //! Actions
 export const authActions = {
   login: 'login',
-  loginStart: 'loginStart',
   loginSuccess: 'loginSuccess',
-  loginFailed: 'loginFailed',
   logout: 'logout',
   logoutSuccess: 'logoutSuccess',
   checkAuth: 'checkAuth',
@@ -17,9 +17,10 @@ export const authActions = {
 export const authSaga = {
   [authActions.checkAuth]: {
     saga: function* () {
-      const dataUser = authServices.getUserLocalStorage();
-      if (!isEmpty(dataUser)) {
-        yield put({ type: authActions.loginSuccess });
+      const user = authServices.getUserLocalStorage();
+      if (!isEmpty(user)) {
+        yield put({ type: authActions.loginSuccess, payload: user });
+        httpServices.attachTokenToHeader(user);
       }
     },
   },
@@ -32,13 +33,13 @@ export const authSaga = {
   },
   [authActions.login]: {
     saga: function* ({ payload }) {
-      yield put({ type: authActions.loginStart });
       const { email, password, keepLoggedIn, callbacks } = payload;
       try {
-        const getUser = yield call(authServices.login, { email, password });
-        if (getUser.data.length > 0) {
-          const user = getUser.data[0];
-          keepLoggedIn && authServices.saveUserLocalStorage({ email, isLogged: true });
+        const { data, ...rest } = yield call(authServices.login, { email, password });
+        const { token, user } = data;
+        if (token) {
+          httpServices.attachTokenToHeader(token);
+          keepLoggedIn && authServices.saveUserLocalStorage(user);
           yield put({ type: authActions.loginSuccess, payload: user });
           callbacks && callbacks.onSuccess();
         } else {
@@ -65,7 +66,13 @@ export const authReducer = (
     switch (action.type) {
       case authActions.loginSuccess: {
         draftState.auth.isLogin = true;
-        draftState.user = { ...action.payload };
+        draftState.auth.user = action.payload;
+        break;
+      }
+
+      case authActions.logoutSuccess: {
+        draftState.auth.isLogin = false;
+        draftState.auth.token = null;
         break;
       }
 
