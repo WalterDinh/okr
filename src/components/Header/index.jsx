@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import useSagaCreators from 'hooks/useSagaCreators';
@@ -8,12 +8,17 @@ import CommonIcons from 'components/icons';
 import { SIZE_ICON } from 'constants';
 import { RouteBase } from 'constants/routeUrl';
 import { authActions } from 'redux/modules/auth';
+import { GetUserSelector } from 'redux/selectors';
+import { BASE_URL } from 'constants/api';
 
-const Header = ({ onClick, nofication, name, onClickBack }) => {
+const Header = ({ onClick, nofication, onClickBack }) => {
   //! State
   const { t } = useTranslation();
+  const btnRef = useRef(null);
   const history = useHistory();
   const { dispatch } = useSagaCreators();
+  const user = GetUserSelector();
+  const { full_name, img_url } = user;
   const [dropDown, setDropdown] = useState(false);
   const isBack = typeof onClickBack !== 'undefined';
 
@@ -66,6 +71,18 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
     },
   ];
   //! Function
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (dropDown && btnRef.current && !btnRef.current.contains(e.target)) {
+        setDropdown(false);
+      }
+    };
+    document.addEventListener('click', checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener('click', checkIfClickedOutside);
+    };
+  }, [dropDown]);
 
   //! Render
   return (
@@ -105,13 +122,15 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
               <CommonIcons.Bell size={SIZE_ICON} />
             </div>
           </div>
-          <div className="user">
-            <div className="avatar"></div>
+          <div className="user" ref={btnRef}>
+            <div className="avatar">
+              <img style={{ borderRadius: '50%', width: '32px' }} src={`${BASE_URL}/${img_url}`} alt="" />
+            </div>
             <Button
-              innerText={name}
               onClick={() => {
                 setDropdown(!dropDown);
               }}
+              innerText={full_name}
               icon={
                 dropDown ? (
                   <CommonIcons.Down
@@ -130,7 +149,7 @@ const Header = ({ onClick, nofication, name, onClickBack }) => {
               }
               type="secondary"
               style={buttonStyle['Button-3']}
-            ></Button>
+            />
           </div>
         </div>
       </div>

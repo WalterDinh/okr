@@ -5,11 +5,17 @@ import * as Yup from 'yup';
 
 import CommonStyles from 'components/CommonStyles';
 import CommonIcon from 'components/icons';
-import Avatar from '../../assets/User1.jpg';
 import { IconButton } from '@mui/material';
+import { Prompt } from 'react-router-dom';
 
 import DayPicker from './DayPicker';
 import { useRef } from 'react';
+import { GetUserSelector } from 'redux/selectors';
+import useGetListCompany from 'hooks/company/useGetListCompany';
+import useSagaCreators from 'hooks/useSagaCreators';
+import { userProfileActions } from 'redux/modules/userprofile';
+import { Box, LinearProgress } from '@mui/material';
+import { BASE_URL } from 'constants/api';
 
 const styles = {
   inputForm: {
@@ -21,46 +27,93 @@ const styles = {
 const UserProfile = () => {
   //! State
   const { t } = useTranslation();
-  const [userAvatar, setUseravatar] = useState(Avatar);
   const formikRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const { dispatch } = useSagaCreators();
+  const {
+    full_name,
+    email,
+    gender: gender_id,
+    date_of_birth,
+    phone_number,
+    company: company_id,
+    department: department_id,
+    img_url,
+    id,
+  } = GetUserSelector();
+  const [listCompany, ...rest] = useGetListCompany();
+  const genderOptions = [
+    {
+      value: 1,
+      label: t('common:male'),
+    },
+    {
+      value: 2,
+      label: t('common:female'),
+    },
+    {
+      value: 3,
+      label: t('common:undefined'),
+    },
+  ];
+
+  const departmentOptions = [
+    {
+      value: 1,
+      label: 'department1',
+    },
+    {
+      value: 2,
+      label: 'department2',
+    },
+  ];
+
+  const [userAvatar, setUseravatar] = useState(img_url);
   const initialValue = {
-    name: '',
-    email: '',
-    gender: 'male',
-    phone: '',
-    dob: new Date(),
-    company: '',
+    full_name: full_name,
+    email: email,
+    gender: gender_id,
+    phone_number: phone_number,
+    date_of_birth: date_of_birth,
+    company: company_id,
     position: '',
-    department: '',
+    department: department_id,
     supervisor: '',
   };
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required(t('messages:required_field', { key: t('common:name') })),
+    full_name: Yup.string().required(t('messages:required_field', { key: t('common:name') })),
     email: Yup.string()
       .email(t('common:email-invalid'))
       .required(t('messages:required_field', { key: t('common:email') })),
 
-    dob: Yup.date()
-      .required(t('messages:required_field', { key: t('common:dob') }))
-      .min(new Date(1900, 0, 1), t('common:dob-invalid'))
-      .max(new Date(), t('common:dob-invalid')),
-
-    phone: Yup.string().required(t('messages:required_field', { key: t('common:phone') })),
-    company: Yup.string().required(t('messages:required_field', { key: t('common:company') })),
+    date_of_birth: Yup.date()
+      .required(t('messages:required_field', { key: t('common:date_of_birth') }))
+      .min(new Date(1900, 0, 1), t('common:date_of_birth-invalid'))
+      .max(new Date(), t('common:date_of_birth-invalid')),
+    phone_number: Yup.string().required(t('messages:required_field', { key: t('common:phone') })),
     position: Yup.string().required(t('messages:required_field', { key: t('common:position') })),
+    company: Yup.string().required(t('messages:required_field', { key: t('common:company') })),
     department: Yup.string().required(t('messages:required_field', { key: t('common:department') })),
     supervisor: Yup.string().required(t('messages:required_field', { key: t('common:supervisor') })),
   });
+
   //!Function
-  const handleChangeAvatar = (e) => {
-    const { files } = e.target;
-    if (files.length > 0) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setUseravatar(e.target.result);
-      };
-      reader.readAsDataURL(files[0]);
-    }
+  const handleChangeAvatar = (event) => {
+    const formData = new FormData();
+    formData.append('file', event.target.files[0]);
+    dispatch(userProfileActions.updateUserAva, {
+      formData: formData,
+      callbacks: {
+        onSuccess: (img_url) => {
+          setUseravatar(img_url);
+        },
+        onFailed: (error) => {
+          setError(error);
+        },
+      },
+    });
   };
 
   const handleReset = () => {
@@ -68,15 +121,44 @@ const UserProfile = () => {
       const confirm = window.confirm(t('messages:confirm-reset'));
       if (confirm) {
         formikRef.current.resetForm({ values: { ...initialValue } });
-        setUseravatar(Avatar);
+        setUseravatar(img_url);
       }
     }
-    if (userAvatar !== Avatar) {
+    if (userAvatar !== img_url) {
       const confirm = window.confirm(t('messages:confirm-reset'));
       if (confirm) {
-        setUseravatar(Avatar);
+        setUseravatar(img_url);
       }
     }
+  };
+
+  const handleSubmit = (values) => {
+    setIsLoading(true);
+    dispatch(userProfileActions.updateUser, {
+      id: id,
+      data: { ...values, img_url: userAvatar },
+      callbacks: {
+        onSuccess: () => {
+          dispatch(userProfileActions.getUser, {
+            id: id,
+            callbacks: {
+              onSuccess: () => {
+                setIsLoading(false);
+                setSuccess(true);
+              },
+              onFailed: (error) => {
+                setError(error);
+                setIsLoading(false);
+              },
+            },
+          });
+        },
+        onFailed: (error) => {
+          setError(error);
+          setIsLoading(false);
+        },
+      },
+    });
   };
 
   //! Render
@@ -85,8 +167,7 @@ const UserProfile = () => {
       <div className="userTitle">{t('common:user-profile')}</div>
       <div className="userContainer">
         <div className="userInfo">
-          <div className="userAvatar">
-            <img alt="avatar-user" src={userAvatar} />
+          <div className="userAvatar" style={{ backgroundImage: `url(${BASE_URL}/${userAvatar})` }}>
             <div className="inputAva">
               <IconButton color="primary" aria-label="upload picture" component="label">
                 <input hidden accept="image/*" type="file" onChange={(e) => handleChangeAvatar(e)} />
@@ -95,26 +176,25 @@ const UserProfile = () => {
             </div>
           </div>
           <div className="user">
-            <div className="userName">User heheheh</div>
-            <div className="userEmail">hehe@gmail.com</div>
+            <div className="userName">{formikRef.current && formikRef.current.values.full_name}</div>
+            <div className="userEmail">{formikRef.current && formikRef.current.values.email}</div>
           </div>
         </div>
         <Formik
           initialValues={initialValue}
           innerRef={formikRef}
           validationSchema={validationSchema}
-          onSubmit={(values, action) => {
-            action.resetForm({ values: { ...initialValue } });
-          }}
+          onSubmit={(values) => handleSubmit(values)}
         >
           {(props) => {
             return (
               <Form>
+                {/* <Prompt when={props.dirty} message={'messages:dirty-alert'} /> */}
                 <div className="userForm">
                   {/* Name */}
                   <div className="inputForm">
                     <Field
-                      name="name"
+                      name="full_name"
                       component={CommonStyles.Input}
                       label={t('common:name')}
                       placeholder={t('messages:input-placeholder', { key: t('common:name') })}
@@ -139,17 +219,7 @@ const UserProfile = () => {
                       name="gender"
                       component={CommonStyles.SelectInputForm}
                       label={t('common:gender')}
-                      value={props.values.gender}
-                      listOption={[
-                        {
-                          value: t('common:male'),
-                          label: t('common:male'),
-                        },
-                        {
-                          value: t('common:female'),
-                          label: t('common:female'),
-                        },
-                      ]}
+                      listOption={genderOptions}
                       style={styles.inputForm}
                     />
                   </div>
@@ -157,18 +227,18 @@ const UserProfile = () => {
                   {/* Dob */}
                   <div className="inputForm">
                     <DayPicker
-                      name="dob"
-                      label={t('common:dob')}
-                      error={props.errors.dob}
-                      value={props.values.dob}
-                      onChange={(value) => props.setFieldValue('dob', value)}
+                      name="date_of_birth"
+                      label={t('common:date_of_birth')}
+                      error={props.errors.date_of_birth}
+                      value={props.values.date_of_birth}
+                      onChange={(value) => props.setFieldValue('date_of_birth', value)}
                     />
                   </div>
 
                   {/* Phone */}
                   <div className="inputForm">
                     <Field
-                      name="phone"
+                      name="phone_number"
                       component={CommonStyles.Input}
                       label={t('common:phone')}
                       placeholder={t('messages:input-placeholder', { key: t('common:phone') })}
@@ -184,18 +254,8 @@ const UserProfile = () => {
                       name="company"
                       component={CommonStyles.SelectInputForm}
                       label={t('common:company')}
-                      value={props.values.company}
                       placeholder={t('messages:input-placeholder', { key: t('common:company') })}
-                      listOption={[
-                        {
-                          value: 'OKRs1',
-                          label: 'OKRs1',
-                        },
-                        {
-                          value: 'OKRs2',
-                          label: 'OKRs2',
-                        },
-                      ]}
+                      listOption={listCompany}
                       style={styles.inputForm}
                     />
                   </div>
@@ -206,18 +266,8 @@ const UserProfile = () => {
                       name="department"
                       component={CommonStyles.SelectInputForm}
                       label={t('common:department')}
-                      value={props.values.department}
                       placeholder={t('messages:input-placeholder', { key: t('common:department') })}
-                      listOption={[
-                        {
-                          value: 'department1',
-                          label: 'department1',
-                        },
-                        {
-                          value: 'department2',
-                          label: 'department2',
-                        },
-                      ]}
+                      listOption={departmentOptions}
                       style={styles.inputForm}
                     />
                   </div>
@@ -255,25 +305,41 @@ const UserProfile = () => {
                     />
                   </div>
                 </div>
-                <div className="btnForm">
-                  <CommonStyles.Button
-                    color="secondary"
-                    type="reset"
-                    variant="contained"
-                    innerText={t('messages:cancel')}
-                    borderRadius="round"
-                    style={{ width: '140px' }}
-                    onClick={handleReset}
-                  />
-                  <CommonStyles.Button
-                    color="primary"
-                    type="submit"
-                    variant="contained"
-                    onClick={props.handleSubmit}
-                    innerText={t('messages:save')}
-                    borderRadius="round"
-                    style={{ width: '140px' }}
-                  />
+                <div className="userForm">
+                  <div className="btnForm">
+                    <CommonStyles.Button
+                      color="secondary"
+                      type="reset"
+                      variant="contained"
+                      innerText={t('messages:cancel')}
+                      borderRadius="round"
+                      style={{ width: '140px' }}
+                      onClick={handleReset}
+                      disabled={isLoading}
+                    />
+                    <CommonStyles.Button
+                      color="primary"
+                      type="submit"
+                      variant="contained"
+                      onClick={props.handleSubmit}
+                      innerText={t('messages:save')}
+                      borderRadius="round"
+                      style={{ width: '140px' }}
+                      disabled={isLoading}
+                    />
+                  </div>
+                  <div className="notification">
+                    {isLoading && (
+                      <Box sx={{ width: '100%' }}>
+                        <LinearProgress />
+                      </Box>
+                    )}
+                    {success || error ? (
+                      <div className={success ? 'success' : 'error'}>{success ? 'Update success' : { error }}</div>
+                    ) : (
+                      ''
+                    )}
+                  </div>
                 </div>
               </Form>
             );

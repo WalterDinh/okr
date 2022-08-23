@@ -3,7 +3,6 @@
   "wrong-format": "{{key}} is wrong format!",
   "login-title": "Welcome to OKRs",
   "input-placeholder": "Enter {{key}}",
-  "password-placeholder": "Enter password",
   "forgot-password": "Forgot password",
   "keep-logged-in": "Remember me",
   "dont-have-acc": "Don't have an account?",
@@ -13,5 +12,7 @@
   "reenter-password-placeholder": "Re-enter password",
   "min-length": "{{key}} must be at least {{min}} characters long!",
   "max-length": "{{key}} must be at most {{max}} characters long!",
-  "add": "Add new"
+  "add": "Add new",
+  "dirty-alert": "You have unsaved changes. Are you sure you want to leave this page?",
+  "confirm-reset": "You have unsaved changes. Are you sure you want to reset?"
 }
