@@ -7,13 +7,15 @@ import { Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import Sidebar from 'components/Sidebar';
 import CommonStyles from 'components/CommonStyles';
+import { useRef } from 'react';
 
 const DefaultLayout = (props) => {
+  const mainRef = useRef();
   return (
-    <Fragment>
+    <div ref={mainRef}>
       <Sidebar />
       <main className="main-container">
-        <Header nofication={20} />
+        <Header nofication={20} mainRef={mainRef} />
         <CommonStyles.Container>
           <Suspense fallback={<CommonStyles.Loading />}>
             <Switch>
@@ -29,7 +31,7 @@ const DefaultLayout = (props) => {
         </CommonStyles.Container>
       </main>
       <Footer />
-    </Fragment>
+    </div>
   );
 };
 

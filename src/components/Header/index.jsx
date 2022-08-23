@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import useSagaCreators from 'hooks/useSagaCreators';
@@ -10,7 +10,7 @@ import { RouteBase } from 'constants/routeUrl';
 import { authActions } from 'redux/modules/auth';
 import { GetAuthSelector } from 'redux/selectors';
 
-const Header = ({ onClick, nofication, onClickBack }) => {
+const Header = ({ onClick, nofication, onClickBack, mainRef }) => {
   //! State
   const { t } = useTranslation();
   const history = useHistory();
@@ -67,6 +67,18 @@ const Header = ({ onClick, nofication, onClickBack }) => {
     },
   ];
   //! Function
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (dropDown && mainRef.current) {
+        setDropdown(false);
+      }
+    };
+    document.addEventListener('click', checkIfClickedOutside);
+
+    return () => {
+      document.removeEventListener('click', checkIfClickedOutside);
+    };
+  }, [dropDown]);
 
   //! Render
   return (
