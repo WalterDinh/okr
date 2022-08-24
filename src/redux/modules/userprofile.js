@@ -23,7 +23,6 @@ export const userProfileSaga = {
         authServices.saveUserLocalStorage({ user: data, token: token });
         callbacks.onSuccess();
       } catch (error) {
-        console.log(error);
         callbacks.onFailed();
       }
     },
