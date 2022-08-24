@@ -20,7 +20,7 @@ const DayPicker = (prop) => {
 
   return (
     <Fragment>
-      <div className="dayPickerLabel" style={{ marginBottom: '8px' }}>
+      <div className="dayPickerLabel" style={{ marginBottom: '8px', lineHeight: '16px' }}>
         {label}
       </div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
