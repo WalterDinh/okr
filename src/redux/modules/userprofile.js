@@ -1,6 +1,7 @@
 import { put, call } from '@redux-saga/core/effects';
 import produce from 'immer';
 import userprofileServices from 'services/userprofileServices';
+import authServices from 'services/authServices';
 
 //! Actions
 export const userProfileActions = {
@@ -15,11 +16,15 @@ export const userProfileSaga = {
   [userProfileActions.updateUser]: {
     saga: function* ({ payload }) {
       const { id, data, callbacks } = payload;
+      const { token } = authServices.getUserLocalStorage();
+
       try {
         yield call(userprofileServices.patchUser, { id, data });
+        authServices.saveUserLocalStorage({ user: data, token: token });
         callbacks.onSuccess();
       } catch (error) {
-        callbacks.onFailed('patch error:', error);
+        console.log(error);
+        callbacks.onFailed();
       }
     },
   },
@@ -31,7 +36,7 @@ export const userProfileSaga = {
         yield put({ type: userProfileActions.setUser, payload: res.data });
         callbacks.onSuccess();
       } catch (error) {
-        callbacks.onFailed(error);
+        callbacks.onFailed();
       }
     },
   },
