@@ -11,23 +11,15 @@ export const signupActions = {
 export const signupSaga = {
   [signupActions.signup]: {
     saga: function* ({ payload }) {
-      yield put({ type: authActions.loginStart });
       const { email, name, password, callbacks } = payload;
       try {
-        const getUser = yield call(authServices.signup, { email });
-
-        if (getUser.data.length > 0) {
-          callbacks && callbacks.onFailed('Email already exists');
-        } else {
-          try {
-            yield call(authServices.saveUserDatabase, { email, name, password });
-            yield put({ type: authActions.loginSuccess, payload: { email, name, password } });
-          } catch (error) {
-            callbacks && callbacks.onFailed('Signup failed');
-          }
-        }
+        yield call(authServices.signup, { email, password, full_name: name });
       } catch (error) {
-        callbacks && callbacks.onFailed('Signup failed');
+        if (error.response.status === 500) {
+          callbacks && callbacks.onSuccess();
+        } else {
+          callbacks && callbacks.onFailed('Signup failed');
+        }
       }
     },
   },
