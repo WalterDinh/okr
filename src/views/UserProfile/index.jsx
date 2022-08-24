@@ -92,6 +92,7 @@ const UserProfile = () => {
   });
 
   //!Function
+
   const handleChangeAvatar = (event) => {
     const formData = new FormData();
     formData.append('file', event.target.files[0]);
@@ -101,8 +102,8 @@ const UserProfile = () => {
         onSuccess: (img_url) => {
           setUseravatar(img_url);
         },
-        onFailed: (error) => {
-          setError(error);
+        onFailed: () => {
+          setError(t('messages:submit-failed', { key: t('common:update') }));
         },
       },
     });
@@ -126,9 +127,15 @@ const UserProfile = () => {
 
   const handleSubmit = (values) => {
     setIsLoading(true);
+    const updateData = {
+      ...values,
+      id: id,
+      img_url: userAvatar,
+      date_of_birth: values.date_of_birth.toISOString().substring(0, 10),
+    };
     dispatch(userProfileActions.updateUser, {
       id: id,
-      data: { ...values, img_url: userAvatar },
+      data: updateData,
       callbacks: {
         onSuccess: () => {
           dispatch(userProfileActions.getUser, {
@@ -138,15 +145,15 @@ const UserProfile = () => {
                 setIsLoading(false);
                 setSuccess(true);
               },
-              onFailed: (error) => {
-                setError(error);
+              onFailed: () => {
+                setError(t('messages:submit-failed', { key: t('common:update') }));
                 setIsLoading(false);
               },
             },
           });
         },
-        onFailed: (error) => {
-          setError(error);
+        onFailed: () => {
+          setError(t('messages:submit-failed', { key: t('common:update') }));
           setIsLoading(false);
         },
       },
@@ -327,7 +334,7 @@ const UserProfile = () => {
                       </Box>
                     )}
                     {success || error ? (
-                      <div className={success ? 'success' : 'error'}>{success ? 'Update success' : { error }}</div>
+                      <div className={success ? 'success' : 'error'}>{success ? 'Update success' : error}</div>
                     ) : (
                       ''
                     )}

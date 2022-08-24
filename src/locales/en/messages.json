@@ -14,5 +14,6 @@
   "max-length": "{{key}} must be at most {{max}} characters long!",
   "add": "Add new",
   "dirty-alert": "You have unsaved changes. Are you sure you want to leave this page?",
-  "confirm-reset": "You have unsaved changes. Are you sure you want to reset?"
+  "confirm-reset": "You have unsaved changes. Are you sure you want to reset?",
+  "submit-failed": "{{key}} failed!"
 }

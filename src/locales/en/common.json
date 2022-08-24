@@ -15,5 +15,6 @@
   "company": "Company",
   "position": "Position",
   "department": "Department",
-  "supervisor": "Supervisor"
+  "supervisor": "Supervisor",
+  "update": "Update"
 }
