@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import withErrorBoundary from 'components/HOCs/withErrorBoundary';
 import { RouteBase } from 'constants/routeUrl';
+import Quiz from 'views/Quiz';
 
 const HomePage = lazy(() => import('views/Home'));
 const Dashboard = lazy(() => import('views/Dashboard'));
@@ -26,6 +27,7 @@ const routes = [
   { path: RouteBase.Dashboard, name: 'Dashboard', component: withErrorBoundary(Dashboard) },
   { path: RouteBase.Report, name: 'Report', component: withErrorBoundary(Report) },
   { path: RouteBase.CFRs, exact: true, name: 'CFRs', component: withErrorBoundary(CFRs) },
+  { path: RouteBase.Quiz, exact: true, name: 'CFRs', component: withErrorBoundary(Quiz) },
   { path: RouteBase.UserProfile, name: 'UserProfile', component: withErrorBoundary(UserProfile) },
   { path: RouteBase.Feedback, exact: true, name: 'Feedback', component: withErrorBoundary(Feedback) },
   { path: RouteBase.Recognition, exact: true, name: 'Recognition', component: withErrorBoundary(Recognition) },

@@ -9,6 +9,7 @@ import cfrs from './cfrs.json';
 import feedback from './feedback.json';
 import report from './report.json';
 import setting from './setting.json';
+import quiz from './quiz.json';
 
 const locale = {
   header: flatten(header, {
@@ -39,6 +40,9 @@ const locale = {
     delimiter: '_',
   }),
   setting: flatten(setting, {
+    delimiter: '_',
+  }),
+  quiz: flatten(quiz, {
     delimiter: '_',
   }),
 };
