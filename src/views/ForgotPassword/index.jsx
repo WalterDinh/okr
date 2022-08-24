@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useHistory } from 'react-router-dom';
 import CommonStyles from 'components/CommonStyles';
 import CommonIcons from '../../components/icons';
 import { useTranslation } from 'react-i18next';
@@ -8,6 +9,8 @@ import { Link } from 'react-router-dom';
 
 const ForgotPasswordPage = () => {
   const { t } = useTranslation();
+  const history = useHistory();
+
   //! State
 
   //! Function
@@ -24,7 +27,9 @@ const ForgotPasswordPage = () => {
         <Formik
           initialValues={{ email: '' }}
           validationSchema={ForgotPasswordSchema}
-          onSubmit={(values, actions) => {}}
+          onSubmit={(values, actions) => {
+            history.push('/reset-password');
+          }}
         >
           <Form>
             <h1 className="heading">{t('forgotpassword:ForgotPassword')}</h1>
@@ -32,8 +37,8 @@ const ForgotPasswordPage = () => {
             <Field
               name="email"
               component={CommonStyles.Input}
-              placeholder={t('messages:email-placeholder')}
-              label={t('common:email-label')}
+              placeholder={t('messages:input-placeholder', { key: t('common:email') })}
+              label={t('common:email')}
               icon={<CommonIcons.Mail />}
             />
             <CommonStyles.Button

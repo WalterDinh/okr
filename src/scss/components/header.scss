@@ -5,7 +5,7 @@
   border-bottom: solid 1px#C4C4C4;
   background: #ffffff;
   height: 56px;
-  z-index: 2;
+  z-index: 11;
   position: relative;
   .left {
     display: flex;
@@ -52,7 +52,6 @@
         height: 32px;
         width: 32px;
         border-radius: 50%;
-        background-image: url('./Asset/avatar.png');
       }
     }
   }
@@ -73,6 +72,7 @@
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
   background-color: #ffffff;
+  z-index: 10;
   @include tablet-down {
     height: 160px;
   }

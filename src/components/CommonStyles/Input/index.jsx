@@ -8,7 +8,7 @@ const Input = (props) => {
   return (
     <>
       {label && <div className="label">{label}</div>}
-      <div className="search-box" style={style}>
+      <div className="input-box" style={style}>
         {icon && <div className="icon">{icon}</div>}
         <input className={icon ? 'input' : 'input2'} {...(field || {})} {...restProps} />
       </div>

@@ -47,6 +47,10 @@ class Services {
   put(...arg) {
     return this.axios.put(...arg);
   }
+
+  patch(...arg) {
+    return this.axios.patch(...arg);
+  }
 }
 
 export default new Services();
