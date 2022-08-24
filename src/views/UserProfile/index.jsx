@@ -16,6 +16,7 @@ import useSagaCreators from 'hooks/useSagaCreators';
 import { userProfileActions } from 'redux/modules/userprofile';
 import { Box, LinearProgress } from '@mui/material';
 import { BASE_URL } from 'constants/api';
+import useGetListDepartment from 'hooks/department/useGetListDepartments';
 
 const styles = {
   inputForm: {
@@ -43,7 +44,9 @@ const UserProfile = () => {
     img_url,
     id,
   } = GetUserSelector();
-  const [listCompany, ...rest] = useGetListCompany();
+  const [listCompany] = useGetListCompany();
+  const [listDepartment] = useGetListDepartment();
+
   const genderOptions = [
     {
       value: 1,
@@ -56,17 +59,6 @@ const UserProfile = () => {
     {
       value: 3,
       label: t('common:undefined'),
-    },
-  ];
-
-  const departmentOptions = [
-    {
-      value: 1,
-      label: 'department1',
-    },
-    {
-      value: 2,
-      label: 'department2',
     },
   ];
 
@@ -267,7 +259,7 @@ const UserProfile = () => {
                       component={CommonStyles.SelectInputForm}
                       label={t('common:department')}
                       placeholder={t('messages:input-placeholder', { key: t('common:department') })}
-                      listOption={departmentOptions}
+                      listOption={listDepartment}
                       style={styles.inputForm}
                     />
                   </div>
