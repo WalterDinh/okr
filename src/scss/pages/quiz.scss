@@ -1,0 +1,25 @@
+.quiz-page {
+  padding-top: 46px;
+  padding-left: 24px;
+  width: 800px;
+  .top-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .title {
+      font-size: 24px;
+    }
+    .btn {
+      border: 1px solid #a09f9f;
+      border-radius: 4px;
+      width: 123px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  }
+  .content {
+  }
+}

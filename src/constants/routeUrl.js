@@ -4,6 +4,7 @@ export const RouteBase = {
   Signup: '/sign-up',
   Dashboard: '/dashboard',
   Checkin: '/checkin',
+  Quiz: '/quiz',
 
   UserProfile: '/user-profile',
   CFRs: '/cfrs',
