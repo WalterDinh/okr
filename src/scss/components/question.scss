@@ -39,6 +39,25 @@
         width: 18px;
         height: 18px;
         margin-right: 12px;
+        background-color: white;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid rgb(113, 110, 110);
+        appearance: none;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+        &:checked::after {
+          background-color: rgb(74, 73, 73);
+          content: '';
+          position: relative;
+          width: 68%;
+          height: 68%;
+          border-radius: 50%;
+        }
       }
       .answer-content {
         flex: 1;

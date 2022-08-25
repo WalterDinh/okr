@@ -1,3 +1,4 @@
+import { BASE_URL } from 'constants/api';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -39,22 +40,25 @@ const Question = (props) => {
       </div>
       <div className="question">{question.content}</div>
       {question.attachment_question.length > 0 && (
-        <img src="https://bom.so/dFKTAm" alt="anh" className="question-img" />
+        <img src={`${BASE_URL}${question.attachment_question.file_url}`} alt="anh" className="question-img" />
       )}
       <div className="answers-list">
-        {question.answers.map((answer) => (
-          <div className="answer" key={answer.id}>
-            <input
-              type="checkbox"
-              className="checkbox"
-              checked={idChecked.indexOf(answer.id) > -1}
-              onChange={() => {
-                handleChangeAnswer(answer.id);
-              }}
-            />
-            <div className="answer-content">{answer.content}</div>
-          </div>
-        ))}
+        {question.answers.map((answer) => {
+          const isChecked = idChecked.indexOf(answer.id) > -1;
+          return (
+            <div className="answer" key={answer.id}>
+              <input
+                type="checkbox"
+                className="checkbox"
+                checked={isChecked}
+                onChange={() => {
+                  handleChangeAnswer(answer.id);
+                }}
+              />
+              <div className="answer-content">{answer.content}</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

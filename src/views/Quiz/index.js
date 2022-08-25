@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const Quiz = () => {
   const { t } = useTranslation();
-  const [data, loading, , refetch] = useGetListQuiz(0);
+  const [data, loading, , refetch] = useGetListQuiz();
 
   const [listResult, setListResult] = useState([]);
 
