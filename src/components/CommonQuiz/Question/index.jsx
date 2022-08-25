@@ -10,10 +10,13 @@ const Question = (props) => {
     if (idChecked.indexOf(id) > -1) {
       setIdChecked(idChecked.filter((item) => item !== id));
     } else {
-      if (question.questionType === 1) {
+      if (question.question_type === 1) {
         setIdChecked([id]);
       }
-      if (question.questionType === 2) {
+      // if (question.question_type === 2) {
+      //   setIdChecked([...idChecked, id]);
+      // }
+      else {
         setIdChecked([...idChecked, id]);
       }
     }
@@ -31,11 +34,13 @@ const Question = (props) => {
           {t('quiz:question')} {index}
         </div>
         <button className="type-question">
-          {question.questionType === 1 ? t('quiz:single-choice') : t('quiz:multiple-choice')}
+          {question.question_type === 1 ? t('quiz:single-choice') : t('quiz:multiple-choice')}
         </button>
       </div>
       <div className="question">{question.content}</div>
-      {question.attachmentQuestion.length > 0 && <img src="https://bom.so/dFKTAm" alt="anh" className="question-img" />}
+      {question.attachment_question.length > 0 && (
+        <img src="https://bom.so/dFKTAm" alt="anh" className="question-img" />
+      )}
       <div className="answers-list">
         {question.answers.map((answer) => (
           <div className="answer" key={answer.id}>
