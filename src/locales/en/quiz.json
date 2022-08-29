@@ -2,5 +2,10 @@
     "question":"Question",
     "single-choice":"Single Choice",
     "multiple-choice":"Multiple Choice",
-    "see-answer":"See the answer"
+    "see-answer":"See the answer",
+    "more-answers":"More answers",
+    "set-of-questions":"Set of questions",
+    "enter-question":"Enter question...",
+    "enter-answer":"Enter answer...",
+    "choice-type-question":"Type question"
 }

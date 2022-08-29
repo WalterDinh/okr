@@ -1,0 +1,17 @@
+.manage-quiz-page {
+  padding: 32px;
+  width: 800px;
+  .filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .title {
+      font-weight: 400;
+      font-size: 24px;
+    }
+    .filter-right {
+      display: flex;
+      gap: 24px;
+    }
+  }
+}
