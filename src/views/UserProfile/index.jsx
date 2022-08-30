@@ -6,9 +6,7 @@ import * as Yup from 'yup';
 import CommonStyles from 'components/CommonStyles';
 import CommonIcon from 'components/icons';
 import { IconButton } from '@mui/material';
-import { Prompt } from 'react-router-dom';
 
-import DayPicker from './DayPicker';
 import { useRef } from 'react';
 import { GetUserSelector } from 'redux/selectors';
 import useGetListCompany from 'hooks/company/useGetListCompany';
@@ -225,11 +223,12 @@ const UserProfile = () => {
 
                   {/* Dob */}
                   <div className="inputForm">
-                    <DayPicker
+                    <CommonStyles.DayPicker
                       name="date_of_birth"
                       label={t('common:date_of_birth')}
                       error={props.errors.date_of_birth}
                       value={props.values.date_of_birth}
+                      maxDate={new Date()}
                       onChange={(value) => props.setFieldValue('date_of_birth', value)}
                     />
                   </div>

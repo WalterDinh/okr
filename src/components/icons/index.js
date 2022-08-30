@@ -8,12 +8,13 @@ import {
   MdKeyboardBackspace,
   MdCameraAlt,
   MdModeEditOutline,
+  MdOutlineLink,
 } from 'react-icons/md';
 import { AiFillCaretUp, AiFillCaretDown, AiOutlineMenu, AiFillDelete } from 'react-icons/ai';
 import { AiFillStar, AiOutlineLogout, AiOutlinePlus, AiOutlineDown } from 'react-icons/ai';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { SiSimpleanalytics } from 'react-icons/si';
-import { BsSearch, BsImageFill } from 'react-icons/bs';
+import { BsSearch, BsFillChatFill } from 'react-icons/bs';
 import { GrClose } from 'react-icons/gr';
 import { GrAddCircle } from 'react-icons/gr';
 
@@ -41,4 +42,6 @@ export default {
   Edit: MdModeEditOutline,
   Delete: AiFillDelete,
   Image: BsImageFill,
+  bubble: BsFillChatFill,
+  Link: MdOutlineLink,
 };

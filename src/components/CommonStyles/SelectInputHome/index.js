@@ -3,11 +3,12 @@ import { red } from '@mui/material/colors';
 import React, { memo } from 'react';
 
 function SelectInputHome(props) {
-  const { placeholder, listOption, width, onChangeSelectInput } = props;
-  const [value, setValue] = React.useState('');
+  const { placeholder, listOption, width, onChangeSelectInput, defautValue } = props;
+  const [value, setValue] = React.useState(defautValue || '');
 
   const handleChange = (e) => {
     setValue(e.target.value);
+    onChangeSelectInput(e.target.value);
   };
 
   return (

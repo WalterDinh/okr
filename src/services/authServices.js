@@ -1,8 +1,9 @@
 import httpServices from './httpServices';
 import { AUTH_URL } from 'constants/api';
+import { SIGNUP_URL } from 'constants/api';
 class AuthServices {
-  signup({ email } = {}) {
-    return httpServices.get(`${AUTH_URL}?email=${email}`);
+  signup({ email, password, full_name } = {}) {
+    return httpServices.post(SIGNUP_URL, { email, password, full_name });
   }
 
   saveUserDatabase({ email, name, password } = {}) {

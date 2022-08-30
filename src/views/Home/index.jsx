@@ -9,7 +9,6 @@ const HomePage = (props) => {
   //! State
   const { t } = useTranslation();
   const { dispatch } = useSagaCreators();
-  const [data, loading, , refetch] = useGetListTodos(0);
 
   //! Function
   const onLogout = () => {
@@ -22,17 +21,6 @@ const HomePage = (props) => {
       <h3>{t('message:hello')}</h3>
 
       <button onClick={onLogout}>Logout</button>
-      {loading ? (
-        'Loading ...'
-      ) : (
-        <div className="container mx-auto p-3">
-          <h3>List Todo</h3>
-          <hr />
-          {data.map((el) => (
-            <EachTodo key={el.id} item={el} />
-          ))}
-        </div>
-      )}
     </div>
   );
 };
