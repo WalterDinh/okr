@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import useSagaCreators from 'hooks/useSagaCreators';
@@ -21,6 +21,7 @@ const SignupPage = () => {
   const { isLogin } = GetAuthSelector();
   const { t } = useTranslation();
   const { dispatch } = useSagaCreators();
+  const history = useHistory();
 
   const [isLogging, setIsLogging] = useState(false);
   const [error, setError] = useState(null);
@@ -35,12 +36,12 @@ const SignupPage = () => {
 
     password: yup
       .string()
-      .matches(passwordRegex, t('messages:wrong-format', { key: t('common:password') }))
+      // .matches(passwordRegex, t('messages:wrong-format', { key: t('common:password') }))
       .required(t('messages:required_field', { key: t('common:password') })),
 
     reEnterPassword: yup
       .string()
-      .matches(passwordRegex, t('messages:wrong-format', { key: t('common:password') }))
+      // .matches(passwordRegex, t('messages:wrong-format', { key: t('common:password') }))
       .required(t('messages:required_field', { key: t('common:re-enter-password') })),
   });
 
@@ -75,6 +76,7 @@ const SignupPage = () => {
                   callbacks: {
                     onSuccess: () => {
                       setIsLogging(false);
+                      history.push('/login');
                     },
                     onFailed: (error) => {
                       setIsLogging(false);
