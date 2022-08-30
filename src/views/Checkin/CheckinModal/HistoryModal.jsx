@@ -35,7 +35,6 @@ const HistoryModal = ({ open, handleClose, detail }) => {
             </thead>
             <tbody>
               {detail.map((result, index) => {
-                console.log('detail: ', result);
                 return (
                   <tr key={index}>
                     <td className="tableBody">
