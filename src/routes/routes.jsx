@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 import withErrorBoundary from 'components/HOCs/withErrorBoundary';
 import { RouteBase } from 'constants/routeUrl';
-import Quiz from 'views/Quiz';
 
 const HomePage = lazy(() => import('views/Home'));
 const Dashboard = lazy(() => import('views/Dashboard'));
@@ -18,7 +17,8 @@ const EmployeeManager = lazy(() => import('views/EmployeeManager'));
 const OKRs = lazy(() => import('views/OKRs'));
 const CreateNewOKRs = lazy(() => import('views/CreateNewOKRs'));
 const Report = lazy(() => import('views/Report'));
-
+const Quiz = lazy(() => import('views/Quiz'));
+const ManageQuiz = lazy(() => import('views/ManageQuiz'));
 console.log(RouteBase.Feedback);
 
 //* For secured route
@@ -44,6 +44,7 @@ const routes = [
 
   { path: RouteBase.OKRs, exact: true, name: 'OKRs', component: withErrorBoundary(OKRs) },
   { path: RouteBase.CreateNewOKRs, exact: true, name: 'CreateNewOKRs', component: withErrorBoundary(CreateNewOKRs) },
+  { path: RouteBase.ManageQuiz, exact: true, name: 'ManageQuiz', component: withErrorBoundary(ManageQuiz) },
   { name: '404', component: withErrorBoundary(Page404) },
 ];
 
