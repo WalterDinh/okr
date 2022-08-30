@@ -23,7 +23,7 @@ const Question = (props) => {
     if (idChecked.indexOf(id) > -1) {
       setIdChecked(idChecked.filter((item) => item !== id));
     } else {
-      if (question.question_type === 1) {
+      if (question.question_type !== 10000) {
         setIdChecked([id]);
       }
       // if (question.question_type === 2) {
@@ -48,7 +48,7 @@ const Question = (props) => {
             {t('quiz:question')} {index}
           </div>
           <button className="type-question">
-            {question.question_type === 1 ? t('quiz:single-choice') : t('quiz:multiple-choice')}
+            {question.question_type !== 1000 ? t('quiz:single-choice') : t('quiz:multiple-choice')}
           </button>
         </div>
       ) : (

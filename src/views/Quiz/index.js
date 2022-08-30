@@ -8,6 +8,7 @@ const Quiz = () => {
   const [data, loading, , refetch] = useGetListQuiz();
 
   const [listResult, setListResult] = useState([]);
+  console.log('listResult: ', listResult);
 
   const handleSetListResult = (value) => {
     if (listResult.findIndex((item) => item.questionId === value.questionId) > -1) {
