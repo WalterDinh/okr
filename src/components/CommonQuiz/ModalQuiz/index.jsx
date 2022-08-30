@@ -27,7 +27,6 @@ const ModalQuiz = (props) => {
   const { t } = useTranslation();
 
   const { id } = GetUserSelector();
-  console.log('id: ', id);
 
   const listAnswer = question?.answers?.map((item) => ({ isCorrect: false, answer: item.content }));
 
