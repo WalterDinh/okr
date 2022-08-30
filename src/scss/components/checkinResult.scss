@@ -1,0 +1,47 @@
+.CheckinResult {
+  width: 64%;
+  left: 18% !important;
+  height: fit-content;
+  border-radius: 4px;
+  margin-top: 24px;
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  .checkinTitle {
+    border-bottom: solid 1px #ccc;
+  }
+  .checkinContent {
+    padding: 16px !important;
+    .tableHeader {
+      border-bottom: solid 3px #000;
+      &__content {
+        padding: 8px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+    .tableBody {
+      border-bottom: solid 1px #ccc;
+      &__content {
+        text-align: center;
+        padding: 8px;
+        line-height: 24px;
+        vertical-align: middle;
+        .progress {
+          min-width: 57px;
+          width: fit-content;
+          height: 24px;
+          text-align: center;
+          background: #000;
+          border-radius: 4px;
+          margin-left: calc((100% - 57px) / 2);
+          color: #fff;
+        }
+        .link {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}

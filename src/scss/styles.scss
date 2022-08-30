@@ -17,10 +17,11 @@
 @import './pages/dashboard.scss';
 @import './pages/feedback.scss';
 @import './pages/employeeManager.scss';
-@import "./pages/createNewOkr.scss";
+@import './pages/createNewOkr.scss';
 @import './pages/userProfile.scss';
 @import './pages/report.scss';
 @import './pages/quiz.scss';
+@import './pages/checkin.scss';
 
 // Component
 @import './components/new.scss';
@@ -34,6 +35,10 @@
 @import './components/pagination.scss';
 @import './components/chartCart.scss';
 @import './components/question.scss';
+@import './components/checkinModal.scss';
+@import './components/checkinResult.scss';
+@import './components//checkinDetail.scss';
+@import './components//checkinHistoryModal.scss';
 
 // Section
 @import './sections/section-blog.scss';

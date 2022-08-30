@@ -1,0 +1,129 @@
+.checkInPage {
+  padding: 33px 24px;
+  .title {
+    font-size: 24px;
+  }
+  .header {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    .utilities {
+      display: flex;
+      gap: 16px;
+    }
+  }
+  .content {
+    margin-top: 16px;
+    background: var(--color-white);
+    min-height: 532px;
+    &__header {
+      font-weight: bold;
+      font-size: 18px;
+      padding: 16px;
+      border-bottom: solid 1px #e4e4e4;
+    }
+    .checkinTable {
+      width: calc(100% - 32px);
+      margin-left: 16px;
+      .checkinHeader {
+        &__content {
+          text-align: left;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 14px;
+          line-height: 16.41px;
+          padding: 18px 0;
+        }
+      }
+      .checkinBody {
+        &__content {
+          padding: 16px 0;
+          border-bottom: solid 1px #ccc;
+          line-height: 24px;
+          vertical-align: middle;
+          .goal {
+            font-weight: bold;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 300px;
+          }
+          .user {
+            display: flex;
+            gap: 8px;
+            .avatar {
+              width: 24px;
+              border-radius: 50%;
+              background-size: cover !important;
+              background-position: center;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background: mediumaquamarine;
+            }
+          }
+          .status-box {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            height: 53px;
+            justify-content: center;
+            .status,
+            .meeting {
+              height: 24px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: solid 1px #000;
+              border-radius: 4px;
+            }
+
+            .status,
+            .meeting {
+              width: 100%;
+            }
+            .meeting {
+              font-weight: bold;
+            }
+            .meeting:hover {
+              background: #000;
+              color: #fff;
+              cursor: pointer;
+            }
+          }
+          .result {
+            width: 90px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid 1px #000;
+            border-radius: 4px;
+          }
+          .progress {
+            height: 24px;
+            width: 57px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid 1px #000;
+            border-radius: 4px;
+            background: #000;
+            color: #fff;
+          }
+        }
+        &:nth-last-child(1) {
+          .checkinBody__content {
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .paging {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+}

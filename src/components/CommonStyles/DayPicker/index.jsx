@@ -5,7 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const DayPicker = (prop) => {
-  const { field, label, fieldStyle, error, value, onChange, ...restProps } = prop;
+  const { field, label, fieldStyle, error, value, onChange, maxDate, minDate, ...restProps } = prop;
   const { name } = field || {};
 
   const textFieldStyle = {
@@ -27,7 +27,8 @@ const DayPicker = (prop) => {
         <DatePicker
           value={value}
           onChange={onChange}
-          maxDate={new Date()}
+          maxDate={maxDate}
+          minDate={minDate}
           renderInput={(params) => <TextField {...params} style={textFieldStyle} />}
         />
       </LocalizationProvider>
