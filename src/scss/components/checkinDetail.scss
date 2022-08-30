@@ -1,0 +1,201 @@
+.checkinModal {
+  width: calc(100% - 48px);
+  height: calc(100% - 24px);
+  margin-top: 24px;
+  margin-left: 24px;
+  position: relative;
+  scroll-behavior: smooth;
+  padding-bottom: 80px;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 24px 25px 24px;
+    border-bottom: solid 1px #e4e4e4;
+    &__left {
+      display: flex;
+      gap: 24px;
+      .groupBtn {
+        display: flex;
+      }
+      .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        line-height: 28px;
+      }
+    }
+    &__right:hover {
+      cursor: pointer;
+    }
+  }
+  .content {
+    padding: 26px 24px 0 24px;
+    &__header {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      .checkinTitle {
+        font-size: 20px;
+        line-height: 23px;
+        min-width: 420px;
+      }
+      .processed {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        span {
+          background: #000;
+          height: 100%;
+          border-radius: 4px;
+          color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 8px;
+        }
+      }
+    }
+    &__body {
+      margin-top: 50px;
+      .tbheader {
+        vertical-align: middle;
+        line-height: 16px;
+        text-align: left;
+        text-transform: uppercase;
+        padding: 0 8px;
+        font-size: 13px;
+        opacity: 50%;
+        padding-bottom: 32px;
+        border-bottom: solid 1px #e4e4e4;
+      }
+      .tbheader:nth-child(1) {
+        width: 250px;
+      }
+      .tbheader:nth-child(6),
+      .tbheader:nth-child(7),
+      .tbheader:nth-child(8),
+      .tbheader:nth-child(9) {
+        width: 178px;
+      }
+      .tbbody {
+        height: 168px;
+        padding: 24px 8px;
+        border-bottom: solid 1px #e4e4e4;
+        vertical-align: top;
+        .checkin {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-weight: bold;
+          height: 32px;
+        }
+        .target,
+        .achieved {
+          width: 72px;
+          height: 32px;
+        }
+        .progress {
+          height: 32px;
+          background-color: #000;
+          color: #fff;
+          border-radius: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .checked {
+          opacity: 1 !important;
+        }
+        .textArea {
+          max-width: 160px;
+          max-height: 136px;
+          textarea {
+            height: 136px;
+          }
+        }
+      }
+    }
+    .confidence_checkin {
+      display: flex;
+      gap: 24px;
+      padding: 16px 0 87px 0;
+      align-items: center;
+    }
+    &__footer {
+      display: flex;
+      position: fixed;
+      height: 80px;
+      width: calc(100% - 48px);
+      bottom: 0;
+      left: 24px;
+      box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.5);
+      align-items: center;
+      padding: 20px 24px;
+      justify-content: space-between;
+      background-color: #fff;
+      .right {
+        display: flex;
+        .complete {
+          display: flex;
+          gap: 12px;
+          align-items: center;
+          padding: 9px 0;
+          padding-right: 24px;
+          margin-right: 24px;
+          border-right: solid 1px #c7c7c7;
+          input {
+            height: 20px;
+            width: 20px;
+          }
+        }
+        .checkinDate {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          div:nth-child(1) {
+            border: solid 1px;
+            border-radius: 4px;
+            height: 40px;
+          }
+        }
+      }
+      .left {
+        display: flex;
+        gap: 24px;
+        button {
+          height: 40px;
+          &:nth-child(1) {
+            width: 140px;
+          }
+          &:nth-child(2) {
+            width: 160px;
+          }
+        }
+      }
+    }
+    &__history {
+      .table {
+        width: 100%;
+        margin-top: 48px;
+      }
+      .tbheader {
+        text-transform: uppercase;
+        opacity: 50%;
+        padding-bottom: 8px;
+      }
+      .tbcontent {
+        text-align: center;
+        padding: 28px 0;
+        div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        border-bottom: solid 1px #e4e4e4;
+      }
+    }
+  }
+}

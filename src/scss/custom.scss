@@ -238,7 +238,7 @@ hr {
   @include desktop {
     padding-left: 240px;
   }
-  background: var(--background-color-grey);
+  background: #f6f7fa;
   min-height: 100vh;
 }
 
@@ -253,4 +253,52 @@ hr {
 
 fieldset {
   border: 0 !important;
+}
+
+.MuiBackdrop-root {
+  backdrop-filter: blur(10px);
+}
+
+.checkboxRound {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 50%;
+  input {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    appearance: none;
+    border: solid 1px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:checked::after,
+    &:hover::after {
+      content: '';
+      height: 12px;
+      width: 12px;
+      background: #000;
+      border-radius: 50%;
+    }
+    &:disabled:hover::after {
+      display: none;
+    }
+    &:checked:disabled:hover::after {
+      display: unset !important;
+    }
+  }
+}
+
+.MuiPaper-root {
+  border-radius: 4px !important;
+}
+
+.MuiFormControl-root {
+  width: 100% !important;
+  height: 40px !important;
+  border-radius: 4px !important;
+  border: solid 1px #ccc !important;
+  display: flex;
+  justify-content: center;
 }

@@ -7,15 +7,15 @@ import {
   MdOutlinePersonOutline,
   MdKeyboardBackspace,
   MdCameraAlt,
+  MdOutlineLink,
 } from 'react-icons/md';
 import { AiFillCaretUp, AiFillCaretDown } from 'react-icons/ai';
 import { AiFillStar, AiOutlineLogout, AiOutlinePlus, AiOutlineDown } from 'react-icons/ai';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { SiSimpleanalytics } from 'react-icons/si';
-import { BsSearch } from 'react-icons/bs';
-import {GrClose} from 'react-icons/gr';
-import {GrAddCircle} from 'react-icons/gr';
-
+import { BsSearch, BsFillChatFill } from 'react-icons/bs';
+import { GrClose } from 'react-icons/gr';
+import { GrAddCircle } from 'react-icons/gr';
 
 export default {
   Bell: MdOutlineNotifications,
@@ -37,4 +37,6 @@ export default {
   Camera: MdCameraAlt,
   Close: GrClose,
   AddCircle: GrAddCircle,
+  bubble: BsFillChatFill,
+  Link: MdOutlineLink,
 };

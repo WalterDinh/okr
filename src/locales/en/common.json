@@ -16,5 +16,20 @@
   "position": "Position",
   "department": "Department",
   "supervisor": "Supervisor",
-  "update": "Update"
+  "update": "Update",
+  "check-in": "Check-in",
+  "options": "Options",
+  "goal": "Goal",
+  "main-result": "Main result",
+  "progress": "Progress",
+  "change": "Change",
+  "employee": "Employee",
+  "confidence": "Confidence",
+  "final": "Final",
+  "status": "Status",
+  "result": "Result",
+  "results": "Results",
+  "quarter": "Quarter {{key}} - 2021",
+  "meeting-name": "Meeting name",
+  "startDate": "Start date"
 }

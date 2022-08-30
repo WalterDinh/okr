@@ -9,6 +9,7 @@ import SelectInputHome from './SelectInputHome';
 import SelectInputForm from './SelectInputForm';
 import ConfirmDialog from './ConfirmDialog';
 import PopupForm from './PopupForm';
+import DayPicker from './DayPicker';
 
 export default {
   Input,
@@ -22,4 +23,5 @@ export default {
   TextEditor,
   ConfirmDialog,
   PopupForm,
+  DayPicker,
 };
